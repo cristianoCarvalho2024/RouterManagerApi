@@ -11,7 +11,13 @@ namespace RouterManager.Api.Controllers;
 public class CredentialsController : ControllerBase
 {
     private readonly ICredentialService _credentialService;
-    public CredentialsController(ICredentialService credentialService) => _credentialService = credentialService;
+    private readonly IProvidersService _providersService;
+
+    public CredentialsController(ICredentialService credentialService, IProvidersService providersService)
+    {
+        _credentialService = credentialService;
+        _providersService = providersService;
+    }
 
     [HttpGet]
     [ProducesResponseType(typeof(CredentialsResponse), 200)]
@@ -19,6 +25,21 @@ public class CredentialsController : ControllerBase
     public async Task<IActionResult> Get([FromQuery] int providerId, [FromQuery] string modelIdentifier, CancellationToken ct)
     {
         var result = await _credentialService.GetCredentialsAsync(providerId, modelIdentifier, ct);
+        if (result == null || result.Credentials.Count == 0) return NotFound();
+        return Ok(result);
+    }
+
+    // Atalho para evitar chamada extra ao /providers no App
+    [HttpGet("by-name")]
+    [ProducesResponseType(typeof(CredentialsResponse), 200)]
+    [ProducesResponseType(404)]
+    public async Task<IActionResult> GetByProviderName([FromQuery] string providerName, [FromQuery] string modelIdentifier, CancellationToken ct)
+    {
+        if (string.IsNullOrWhiteSpace(providerName)) return NotFound();
+        var all = await _providersService.GetAllAsync(ct);
+        var match = all.FirstOrDefault(p => string.Equals(p.Name, providerName, StringComparison.OrdinalIgnoreCase));
+        if (match == null) return NotFound();
+        var result = await _credentialService.GetCredentialsAsync(match.Id, modelIdentifier, ct);
         if (result == null || result.Credentials.Count == 0) return NotFound();
         return Ok(result);
     }

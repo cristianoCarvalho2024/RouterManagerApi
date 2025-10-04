@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RouterManager.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4ff2878052a62c6a428618717ef60e2abed06258")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a17f2c8be1ee2bc83c64f421a6c12840de0219d4")]
 [assembly: System.Reflection.AssemblyProductAttribute("RouterManager.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RouterManager.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
