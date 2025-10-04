@@ -12,21 +12,15 @@ public class CredentialRepository : ICredentialRepository
 
     public async Task<IEnumerable<(string Username, string PasswordPlain)>> GetPlainByProviderAndModelAsync(int providerId, string modelIdentifier, CancellationToken ct = default)
     {
-        // Tenta casar pelo Name primeiro
-        var query = _ctx.RouterCredentials
-            .Include(rc => rc.RouterModel)
-            .Where(rc => rc.RouterModel.ProviderId == providerId && rc.RouterModel.Name == modelIdentifier)
-            .Select(rc => new { rc.Username, Plain = _ctx.Unprotect(rc.PasswordEncrypted) });
+        // Avalia uma única consulta que aceita Name ou EnumIdentifier do modelo
+        var hasEnum = Enum.TryParse<RouterModelIdentifier>(modelIdentifier, true, out var parsedEnum);
 
-        var list = await query.ToListAsync(ct);
-        if (list.Count == 0 && Enum.TryParse<RouterModelIdentifier>(modelIdentifier, out var parsed))
-        {
-            list = await _ctx.RouterCredentials
-                .Include(rc => rc.RouterModel)
-                .Where(rc => rc.RouterModel.ProviderId == providerId && rc.RouterModel.EnumIdentifier == parsed)
-                .Select(rc => new { rc.Username, Plain = _ctx.Unprotect(rc.PasswordEncrypted) })
-                .ToListAsync(ct);
-        }
+        var list = await _ctx.RouterCredentials
+            .Include(rc => rc.RouterModel)
+            .Where(rc => rc.RouterModel.ProviderId == providerId &&
+                         (rc.RouterModel.Name == modelIdentifier || (hasEnum && rc.RouterModel.EnumIdentifier == parsedEnum)))
+            .Select(rc => new { rc.Username, Plain = _ctx.Unprotect(rc.PasswordEncrypted) })
+            .ToListAsync(ct);
 
         return list.Select(x => (x.Username, x.Plain));
     }

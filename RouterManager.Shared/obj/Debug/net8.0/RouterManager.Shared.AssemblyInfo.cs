@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RouterManager.Shared")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a17f2c8be1ee2bc83c64f421a6c12840de0219d4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f184de05c3e501c09925089b992c389dd44ecd40")]
 [assembly: System.Reflection.AssemblyProductAttribute("RouterManager.Shared")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RouterManager.Shared")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

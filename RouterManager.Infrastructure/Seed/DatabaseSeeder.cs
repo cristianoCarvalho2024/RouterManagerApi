@@ -39,21 +39,17 @@ public class DatabaseSeeder : IDatabaseSeeder
             await _ctx.SaveChangesAsync();
         }
 
-        // Importa credenciais do App (MockProviderService) para o banco
+        // Vellon - manter apenas a(s) credencial(is) correta(s) para o modelo
+        await EnsureProviderModelAndCredentialsExact(
+           providerName: "Vellon",
+           modelName: "Huawei_EG8145V5_V2",
+           new[] { ("Epadmin", "6dTa2dhPYrNdcYhu") });
+
+        // Wlan - credenciais conhecidas (mantém existentes e adiciona as que faltam)
         await EnsureProviderModelAndCredentials(
             providerName: "Wlan",
             modelName: "Huawei_EG8145V5_V2",
-            new[] { ("Epadmin", "adminEp") });
-
-        await EnsureProviderModelAndCredentials(
-            providerName: "Wlan",
-            modelName: "Huawei_EG8145V5",
-            new[] { ("telecomadmin", "admintelecom"), ("Epadmin", "adminEp") });
-
-        await EnsureProviderModelAndCredentials(
-            providerName: "Vellon",
-            modelName: "Huawei_EG8145X6_10",
-            new[] { ("Epadmin", "adminEp") });
+            new[] { ("Epadmin", "adminEp"), ("Epadmin", "6dTa2dhPYrNdcYhu") });
 
         // Usuário admin padrão
         if (!await _ctx.Users.AnyAsync())
@@ -62,6 +58,67 @@ public class DatabaseSeeder : IDatabaseSeeder
             _ctx.Users.Add(user);
             await _ctx.SaveChangesAsync();
         }
+    }
+
+    private async Task EnsureProviderModelAndCredentialsExact(string providerName, string modelName, (string Username, string Password)[] credentials)
+    {
+        // Garante provider e model
+        var provider = await _ctx.Providers.FirstOrDefaultAsync(p => p.Name == providerName);
+        if (provider == null)
+        {
+            provider = new Provider { Name = providerName };
+            _ctx.Providers.Add(provider);
+            await _ctx.SaveChangesAsync();
+        }
+
+        var model = await _ctx.RouterModels.FirstOrDefaultAsync(m => m.ProviderId == provider.Id && m.Name == modelName);
+        if (model == null && Enum.TryParse<RouterModelIdentifier>(modelName, out var parsed))
+        {
+            model = await _ctx.RouterModels.FirstOrDefaultAsync(m => m.ProviderId == provider.Id && m.EnumIdentifier == parsed);
+        }
+        if (model == null)
+        {
+            model = new RouterModel { Name = modelName, EnumIdentifier = RouterModelIdentifier.Unknown, ProviderId = provider.Id };
+            _ctx.RouterModels.Add(model);
+            await _ctx.SaveChangesAsync();
+        }
+
+        // Limpa credenciais que não pertencem ao conjunto fornecido
+        var target = credentials.ToHashSet();
+        var existing = await _ctx.RouterCredentials.Where(rc => rc.RouterModelId == model.Id).ToListAsync();
+        var toRemove = new List<RouterCredential>();
+        foreach (var rc in existing)
+        {
+            var plain = SafeUnprotect(rc.PasswordEncrypted);
+            if (!target.Contains((rc.Username, plain)))
+            {
+                toRemove.Add(rc);
+            }
+        }
+        if (toRemove.Count > 0)
+        {
+            _ctx.RouterCredentials.RemoveRange(toRemove);
+            await _ctx.SaveChangesAsync();
+        }
+
+        // Garante inserção das credenciais alvo que não existam
+        var existingSet = (await _ctx.RouterCredentials.Where(rc => rc.RouterModelId == model.Id).ToListAsync())
+            .Select(rc => (rc.Username, Plain: SafeUnprotect(rc.PasswordEncrypted)))
+            .ToHashSet();
+
+        foreach (var cred in credentials)
+        {
+            if (!existingSet.Contains((cred.Username, cred.Password)))
+            {
+                _ctx.RouterCredentials.Add(new RouterCredential
+                {
+                    Username = cred.Username,
+                    PasswordEncrypted = _ctx.Protect(cred.Password),
+                    RouterModelId = model.Id
+                });
+            }
+        }
+        await _ctx.SaveChangesAsync();
     }
 
     private async Task EnsureProviderModelAndCredentials(string providerName, string modelName, (string Username, string Password)[] credentials)
