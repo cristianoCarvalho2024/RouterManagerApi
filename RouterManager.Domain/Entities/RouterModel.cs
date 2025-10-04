@@ -7,6 +7,6 @@ public class RouterModel
     public RouterModelIdentifier EnumIdentifier { get; set; }
     public int ProviderId { get; set; }
     public Provider Provider { get; set; } = null!;
-    public RouterCredential? Credential { get; set; }
+    public ICollection<RouterCredential> Credentials { get; set; } = new List<RouterCredential>();
     public ICollection<Device> Devices { get; set; } = new List<Device>();
 }

@@ -202,10 +202,12 @@ app.UseHttpsRedirection();
 app.UseCors(MyAllowSpecificOrigins);
 
 // API Key nas rotas públicas
-app.UseWhen(ctx => ctx.Request.Path.StartsWithSegments("/api/v1/credentials") || ctx.Request.Path.StartsWithSegments("/api/providers"), branch =>
-{
-    branch.UseMiddleware<RouterManager.Api.Middleware.ApiKeyMiddleware>();
-});
+app.UseWhen(
+    ctx => ctx.Request.Path.StartsWithSegments("/api/v1/credentials")
+        || ctx.Request.Path.StartsWithSegments("/api/providers")
+        || ctx.Request.Path.StartsWithSegments("/api/v1/providers"),
+    branch => { branch.UseMiddleware<RouterManager.Api.Middleware.ApiKeyMiddleware>(); }
+);
 
 app.UseRateLimiter();
 app.UseAuthentication();

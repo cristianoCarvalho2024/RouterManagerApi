@@ -6,7 +6,8 @@ namespace RouterManager.Api.Controllers;
 
 [ApiController]
 [Route("api/providers")]
-[Authorize]
+[Route("api/v1/providers")] // alias v1
+[AllowAnonymous] // protegido por API Key via middleware; não exige JWT
 public class ProvidersController : ControllerBase
 {
     private readonly IProvidersService _service;

@@ -10,13 +10,24 @@ public class CredentialRepository : ICredentialRepository
     private readonly RouterManagerDbContext _ctx;
     public CredentialRepository(RouterManagerDbContext ctx) => _ctx = ctx;
 
-    public async Task<(string Username, string PasswordPlain)?> GetPlainByProviderAndModelAsync(int providerId, string modelIdentifier, CancellationToken ct = default)
+    public async Task<IEnumerable<(string Username, string PasswordPlain)>> GetPlainByProviderAndModelAsync(int providerId, string modelIdentifier, CancellationToken ct = default)
     {
-        var cred = await _ctx.RouterCredentials
+        // Tenta casar pelo Name primeiro
+        var query = _ctx.RouterCredentials
             .Include(rc => rc.RouterModel)
-            .ThenInclude(rm => rm.Provider)
-            .FirstOrDefaultAsync(rc => rc.RouterModel.ProviderId == providerId && rc.RouterModel.EnumIdentifier.ToString() == modelIdentifier, ct);
-        if (cred == null) return null;
-        return (cred.Username, _ctx.Unprotect(cred.PasswordEncrypted));
+            .Where(rc => rc.RouterModel.ProviderId == providerId && rc.RouterModel.Name == modelIdentifier)
+            .Select(rc => new { rc.Username, Plain = _ctx.Unprotect(rc.PasswordEncrypted) });
+
+        var list = await query.ToListAsync(ct);
+        if (list.Count == 0 && Enum.TryParse<RouterModelIdentifier>(modelIdentifier, out var parsed))
+        {
+            list = await _ctx.RouterCredentials
+                .Include(rc => rc.RouterModel)
+                .Where(rc => rc.RouterModel.ProviderId == providerId && rc.RouterModel.EnumIdentifier == parsed)
+                .Select(rc => new { rc.Username, Plain = _ctx.Unprotect(rc.PasswordEncrypted) })
+                .ToListAsync(ct);
+        }
+
+        return list.Select(x => (x.Username, x.Plain));
     }
 }

@@ -1,5 +1,6 @@
 using RouterManager.Application.Interfaces;
 using RouterManager.Shared.Dtos.Responses;
+using System.Linq;
 
 namespace RouterManager.Application.Services;
 
@@ -10,13 +11,13 @@ public class CredentialService : ICredentialService
 
     public async Task<CredentialsResponse?> GetCredentialsAsync(int providerId, string modelIdentifier, CancellationToken ct = default)
     {
-        var result = await _repo.GetPlainByProviderAndModelAsync(providerId, modelIdentifier, ct);
-        if (result == null) return null;
+        var list = await _repo.GetPlainByProviderAndModelAsync(providerId, modelIdentifier, ct);
+        if (list == null || !list.Any()) return null;
         var response = new CredentialsResponse
         {
             ProviderId = providerId,
             Model = modelIdentifier,
-            Credentials = new List<CredentialItem> { new(result.Value.Username, result.Value.PasswordPlain) }
+            Credentials = list.Select(c => new CredentialItem(c.Username, c.PasswordPlain)).ToList()
         };
         return response;
     }

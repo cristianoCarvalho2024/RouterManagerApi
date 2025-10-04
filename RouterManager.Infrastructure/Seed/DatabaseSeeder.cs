@@ -23,6 +23,7 @@ public class DatabaseSeeder : IDatabaseSeeder
             await _ctx.Database.MigrateAsync();
         }
 
+        // Seed inicial mínimo (se nada existe)
         if (!await _ctx.Providers.AnyAsync())
         {
             var provider = new Provider { Name = "Default ISP" };
@@ -33,16 +34,87 @@ public class DatabaseSeeder : IDatabaseSeeder
             _ctx.RouterModels.Add(model);
             await _ctx.SaveChangesAsync();
 
-            var cred = new RouterCredential { Username = "admin", PasswordEncrypted = _ctx.Protect("admin123"), RouterModelId = model.Id };
-            _ctx.RouterCredentials.Add(cred);
+            var cred1 = new RouterCredential { Username = "admin", PasswordEncrypted = _ctx.Protect("admin123"), RouterModelId = model.Id };
+            _ctx.RouterCredentials.AddRange(cred1);
             await _ctx.SaveChangesAsync();
         }
 
+        // Importa credenciais do App (MockProviderService) para o banco
+        await EnsureProviderModelAndCredentials(
+            providerName: "Wlan",
+            modelName: "Huawei_EG8145V5_V2",
+            new[] { ("Epadmin", "adminEp") });
+
+        await EnsureProviderModelAndCredentials(
+            providerName: "Wlan",
+            modelName: "Huawei_EG8145V5",
+            new[] { ("telecomadmin", "admintelecom"), ("Epadmin", "adminEp") });
+
+        await EnsureProviderModelAndCredentials(
+            providerName: "Vellon",
+            modelName: "Huawei_EG8145X6_10",
+            new[] { ("Epadmin", "adminEp") });
+
+        // Usuário admin padrão
         if (!await _ctx.Users.AnyAsync())
         {
             var user = new User { Username = "admin@local", PasswordHash = BCrypt.Net.BCrypt.HashPassword("Admin#123"), Role = "Admin" };
             _ctx.Users.Add(user);
             await _ctx.SaveChangesAsync();
         }
+    }
+
+    private async Task EnsureProviderModelAndCredentials(string providerName, string modelName, (string Username, string Password)[] credentials)
+    {
+        // Provider
+        var provider = await _ctx.Providers.FirstOrDefaultAsync(p => p.Name == providerName);
+        if (provider == null)
+        {
+            provider = new Provider { Name = providerName };
+            _ctx.Providers.Add(provider);
+            await _ctx.SaveChangesAsync();
+        }
+
+        // Model por Name
+        var model = await _ctx.RouterModels.FirstOrDefaultAsync(m => m.ProviderId == provider.Id && m.Name == modelName);
+
+        // Se não encontrou por Name, tenta por EnumIdentifier (parse do texto)
+        if (model == null && Enum.TryParse<RouterModelIdentifier>(modelName, out var parsed))
+        {
+            model = await _ctx.RouterModels.FirstOrDefaultAsync(m => m.ProviderId == provider.Id && m.EnumIdentifier == parsed);
+        }
+
+        if (model == null)
+        {
+            model = new RouterModel { Name = modelName, EnumIdentifier = RouterModelIdentifier.Unknown, ProviderId = provider.Id };
+            _ctx.RouterModels.Add(model);
+            await _ctx.SaveChangesAsync();
+        }
+
+        // Carrega credenciais existentes do modelo para evitar duplicação
+        var existing = await _ctx.RouterCredentials.Where(rc => rc.RouterModelId == model.Id).ToListAsync();
+        var existingSet = existing
+            .Select(rc => (rc.Username, Plain: SafeUnprotect(rc.PasswordEncrypted)))
+            .ToHashSet();
+
+        foreach (var cred in credentials)
+        {
+            if (!existingSet.Contains((cred.Username, cred.Password)))
+            {
+                _ctx.RouterCredentials.Add(new RouterCredential
+                {
+                    Username = cred.Username,
+                    PasswordEncrypted = _ctx.Protect(cred.Password),
+                    RouterModelId = model.Id
+                });
+            }
+        }
+        await _ctx.SaveChangesAsync();
+    }
+
+    private string SafeUnprotect(string encrypted)
+    {
+        try { return _ctx.Unprotect(encrypted); }
+        catch { return string.Empty; }
     }
 }

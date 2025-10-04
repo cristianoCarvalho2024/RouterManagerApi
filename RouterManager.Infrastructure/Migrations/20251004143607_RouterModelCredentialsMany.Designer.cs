@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RouterManager.Infrastructure.Persistence;
 
@@ -11,9 +12,11 @@ using RouterManager.Infrastructure.Persistence;
 namespace RouterManager.Infrastructure.Migrations
 {
     [DbContext(typeof(RouterManagerDbContext))]
-    partial class RouterManagerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251004143607_RouterModelCredentialsMany")]
+    partial class RouterModelCredentialsMany
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

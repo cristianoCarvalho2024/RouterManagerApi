@@ -29,8 +29,14 @@ public class RouterManagerDbContext : DbContext
         base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<Device>().HasIndex(x => x.SerialNumber).IsUnique();
         modelBuilder.Entity<User>().HasIndex(u => u.Username).IsUnique();
-        modelBuilder.Entity<RouterModel>().HasOne(r => r.Credential).WithOne(c => c.RouterModel)
-            .HasForeignKey<RouterCredential>(c => c.RouterModelId);
+
+        // Alterado para 1:N: RouterModel -> RouterCredentials
+        modelBuilder.Entity<RouterModel>()
+            .HasMany(r => r.Credentials)
+            .WithOne(c => c.RouterModel)
+            .HasForeignKey(c => c.RouterModelId)
+            .OnDelete(DeleteBehavior.Cascade);
+
         modelBuilder.Entity<RouterProfile>().HasIndex(rp => rp.SerialNumber).IsUnique();
     }
 

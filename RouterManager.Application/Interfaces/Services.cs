@@ -21,7 +21,7 @@ public interface IUpdateService
 
 public interface ICredentialRepository
 {
-    Task<(string Username, string PasswordPlain)?> GetPlainByProviderAndModelAsync(int providerId, string modelIdentifier, CancellationToken ct = default);
+    Task<IEnumerable<(string Username, string PasswordPlain)>> GetPlainByProviderAndModelAsync(int providerId, string modelIdentifier, CancellationToken ct = default);
 }
 
 public interface IDeviceRepository

@@ -7,7 +7,7 @@ namespace RouterManager.Api.Controllers;
 
 [ApiController]
 [Route("api/v1/[controller]")]
-[Authorize]
+[AllowAnonymous] // protegido por API Key via middleware; não exige JWT
 public class CredentialsController : ControllerBase
 {
     private readonly ICredentialService _credentialService;
