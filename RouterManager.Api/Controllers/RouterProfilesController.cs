@@ -18,7 +18,7 @@ public class RouterProfilesController : ControllerBase
     public RouterProfilesController(RouterManagerDbContext db) => _db = db;
 
     [HttpPost]
-    [Authorize(Policy = "AdminOnly")]
+    [Authorize] // permite qualquer usuário autenticado (inclui dispositivos)
     public async Task<IActionResult> Create([FromBody] CreateRouterProfileRequest req, CancellationToken ct)
     {
         if (string.IsNullOrWhiteSpace(req.Ip)) return BadRequest("Ip requerido");

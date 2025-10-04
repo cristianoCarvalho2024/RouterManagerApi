@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RouterManager.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3090cef07e5e58efb2e7c31c2a566c2be44b6e19")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+444e20d3ffe5cc3907f667606c4747a0d76dca6d")]
 [assembly: System.Reflection.AssemblyProductAttribute("RouterManager.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RouterManager.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
