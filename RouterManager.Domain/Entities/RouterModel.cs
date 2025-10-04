@@ -1,0 +1,12 @@
+namespace RouterManager.Domain.Entities;
+
+public class RouterModel
+{
+    public int Id { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public RouterModelIdentifier EnumIdentifier { get; set; }
+    public int ProviderId { get; set; }
+    public Provider Provider { get; set; } = null!;
+    public RouterCredential? Credential { get; set; }
+    public ICollection<Device> Devices { get; set; } = new List<Device>();
+}

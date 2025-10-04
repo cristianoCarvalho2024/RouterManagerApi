@@ -1,0 +1,25 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using RouterManager.Application.Interfaces;
+using RouterManager.Shared.Dtos.Responses;
+
+namespace RouterManager.Api.Controllers;
+
+[ApiController]
+[Route("api/v1/[controller]")]
+[Authorize]
+public class CredentialsController : ControllerBase
+{
+    private readonly ICredentialService _credentialService;
+    public CredentialsController(ICredentialService credentialService) => _credentialService = credentialService;
+
+    [HttpGet]
+    [ProducesResponseType(typeof(CredentialsResponse), 200)]
+    [ProducesResponseType(404)]
+    public async Task<IActionResult> Get([FromQuery] int providerId, [FromQuery] string modelIdentifier, CancellationToken ct)
+    {
+        var result = await _credentialService.GetCredentialsAsync(providerId, modelIdentifier, ct);
+        if (result == null || result.Credentials.Count == 0) return NotFound();
+        return Ok(result);
+    }
+}

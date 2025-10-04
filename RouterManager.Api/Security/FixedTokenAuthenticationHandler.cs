@@ -1,0 +1,39 @@
+using System.Security.Claims;
+using System.Text.Encodings.Web;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.Extensions.Options;
+
+namespace RouterManager.Api.Security;
+
+public class FixedTokenAuthenticationHandler : AuthenticationHandler<AuthenticationSchemeOptions>
+{
+    public const string SchemeName = "FixedToken";
+    private const string FixedToken = "6dTa2dhPYrNdcYhu"; // token fixo solicitado
+
+    public FixedTokenAuthenticationHandler(
+        IOptionsMonitor<AuthenticationSchemeOptions> options,
+        ILoggerFactory logger,
+        UrlEncoder encoder,
+        ISystemClock clock) : base(options, logger, encoder, clock) { }
+
+    protected override Task<AuthenticateResult> HandleAuthenticateAsync()
+    {
+        if (!Request.Headers.TryGetValue("Authorization", out var authHeader))
+            return Task.FromResult(AuthenticateResult.Fail("Authorization header missing"));
+
+        var value = authHeader.ToString();
+        // Aceita formatos: "Bearer <token>" ou somente o token puro
+        string token = value.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase)
+            ? value.Substring("Bearer ".Length).Trim()
+            : value.Trim();
+
+        if (!string.Equals(token, FixedToken, StringComparison.Ordinal))
+            return Task.FromResult(AuthenticateResult.Fail("Invalid token"));
+
+        var claims = new[] { new Claim(ClaimTypes.Name, "FixedClient") };
+        var identity = new ClaimsIdentity(claims, SchemeName);
+        var principal = new ClaimsPrincipal(identity);
+        var ticket = new AuthenticationTicket(principal, SchemeName);
+        return Task.FromResult(AuthenticateResult.Success(ticket));
+    }
+}

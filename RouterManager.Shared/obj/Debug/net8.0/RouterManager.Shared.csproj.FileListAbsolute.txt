@@ -1,0 +1,12 @@
+C:\Users\Cristiano\Desktop\RouterManagerApi\RouterManager.Shared\bin\Debug\net8.0\RouterManager.Shared.deps.json
+C:\Users\Cristiano\Desktop\RouterManagerApi\RouterManager.Shared\bin\Debug\net8.0\RouterManager.Shared.dll
+C:\Users\Cristiano\Desktop\RouterManagerApi\RouterManager.Shared\bin\Debug\net8.0\RouterManager.Shared.pdb
+C:\Users\Cristiano\Desktop\RouterManagerApi\RouterManager.Shared\obj\Debug\net8.0\RouterManager.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Cristiano\Desktop\RouterManagerApi\RouterManager.Shared\obj\Debug\net8.0\RouterManager.Shared.AssemblyInfoInputs.cache
+C:\Users\Cristiano\Desktop\RouterManagerApi\RouterManager.Shared\obj\Debug\net8.0\RouterManager.Shared.AssemblyInfo.cs
+C:\Users\Cristiano\Desktop\RouterManagerApi\RouterManager.Shared\obj\Debug\net8.0\RouterManager.Shared.csproj.CoreCompileInputs.cache
+C:\Users\Cristiano\Desktop\RouterManagerApi\RouterManager.Shared\obj\Debug\net8.0\RouterManager.Shared.dll
+C:\Users\Cristiano\Desktop\RouterManagerApi\RouterManager.Shared\obj\Debug\net8.0\refint\RouterManager.Shared.dll
+C:\Users\Cristiano\Desktop\RouterManagerApi\RouterManager.Shared\obj\Debug\net8.0\RouterManager.Shared.pdb
+C:\Users\Cristiano\Desktop\RouterManagerApi\RouterManager.Shared\obj\Debug\net8.0\ref\RouterManager.Shared.dll
+C:\Users\Cristiano\Desktop\RouterManagerApi\RouterManager.Shared\obj\Debug\net8.0\RouterManager.Shared.sourcelink.json

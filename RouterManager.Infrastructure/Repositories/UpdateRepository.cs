@@ -1,0 +1,20 @@
+using Microsoft.EntityFrameworkCore;
+using RouterManager.Application.Interfaces;
+using RouterManager.Domain.Entities;
+using RouterManager.Infrastructure.Persistence;
+
+namespace RouterManager.Infrastructure.Repositories;
+
+public class UpdateRepository : IUpdateRepository
+{
+    private readonly RouterManagerDbContext _ctx;
+    public UpdateRepository(RouterManagerDbContext ctx) => _ctx = ctx;
+
+    public async Task<UpdatePackage?> GetApplicableAsync(int providerId, string modelIdentifier, string firmwareVersion, CancellationToken ct = default)
+    {
+        return await _ctx.UpdatePackages
+            .Include(p => p.Actions)
+            .OrderByDescending(p => p.Id)
+            .FirstOrDefaultAsync(ct);
+    }
+}

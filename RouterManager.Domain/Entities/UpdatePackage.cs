@@ -1,0 +1,9 @@
+namespace RouterManager.Domain.Entities;
+
+public class UpdatePackage
+{
+    public int Id { get; set; }
+    public string TargetVersion { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
+    public ICollection<UpdateAction> Actions { get; set; } = new List<UpdateAction>();
+}

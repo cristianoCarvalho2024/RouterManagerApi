@@ -1,0 +1,59 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using RouterManager.Infrastructure.Persistence;
+using RouterManager.Shared.Dtos.Requests;
+using RouterManager.Domain.Entities;
+using System.Security.Claims;
+
+namespace RouterManager.Api.Controllers;
+
+[ApiController]
+[Route("api/routerprofiles")]
+[Route("api/v1/routerprofiles")] // v1
+[Authorize]
+public class RouterProfilesController : ControllerBase
+{
+    private readonly RouterManagerDbContext _db;
+    public RouterProfilesController(RouterManagerDbContext db) => _db = db;
+
+    [HttpPost]
+    [Authorize(Policy = "AdminOnly")]
+    public async Task<IActionResult> Create([FromBody] CreateRouterProfileRequest req, CancellationToken ct)
+    {
+        if (string.IsNullOrWhiteSpace(req.Ip)) return BadRequest("Ip requerido");
+        if (string.IsNullOrWhiteSpace(req.SerialNumber)) return BadRequest("Serial requerido");
+
+        // Identidade do dispositivo/usuário via JWT
+        var deviceName = User?.Identity?.Name ?? User.FindFirstValue(ClaimTypes.Name);
+        if (string.IsNullOrEmpty(deviceName)) return Unauthorized();
+        var user = await _db.Users.FirstOrDefaultAsync(u => u.Username == deviceName, ct);
+        if (user == null) return Unauthorized();
+
+        // Verifica duplicado por serial
+        if (await _db.RouterProfiles.AnyAsync(r => r.SerialNumber == req.SerialNumber, ct))
+            return Conflict("Perfil já existe para este serial.");
+
+        var entity = new RouterProfile
+        {
+            Ip = req.Ip.Trim(),
+            Username = req.Username.Trim(),
+            PasswordHash = req.Password, // TODO: aplicar hash
+            SerialNumber = req.SerialNumber.Trim(),
+            Model = req.Model.Trim(),
+            CreatedAt = DateTime.UtcNow,
+            UserId = user.Id
+        };
+        _db.RouterProfiles.Add(entity);
+        await _db.SaveChangesAsync(ct);
+        return CreatedAtAction(nameof(GetById), new { id = entity.Id }, new { entity.Id });
+    }
+
+    [HttpGet("{id:int}")]
+    public async Task<IActionResult> GetById(int id, CancellationToken ct)
+    {
+        var e = await _db.RouterProfiles.FirstOrDefaultAsync(r => r.Id == id, ct);
+        if (e == null) return NotFound();
+        return Ok(new { e.Id, e.Ip, e.Username, e.SerialNumber, e.Model, e.CreatedAt, e.UserId });
+    }
+}

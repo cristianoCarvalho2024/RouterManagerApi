@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "dgSpecHash": "TLAcdoNsGsk=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Application\\RouterManager.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Cristiano\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\Cristiano\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
+    "C:\\Users\\Cristiano\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\Cristiano\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\8.0.0\\microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\Cristiano\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512",
+    "C:\\Users\\Cristiano\\.nuget\\packages\\microsoft.identitymodel.abstractions\\7.5.2\\microsoft.identitymodel.abstractions.7.5.2.nupkg.sha512",
+    "C:\\Users\\Cristiano\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\7.5.2\\microsoft.identitymodel.jsonwebtokens.7.5.2.nupkg.sha512",
+    "C:\\Users\\Cristiano\\.nuget\\packages\\microsoft.identitymodel.logging\\7.5.2\\microsoft.identitymodel.logging.7.5.2.nupkg.sha512",
+    "C:\\Users\\Cristiano\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.5.2\\microsoft.identitymodel.tokens.7.5.2.nupkg.sha512",
+    "C:\\Users\\Cristiano\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.5.2\\system.identitymodel.tokens.jwt.7.5.2.nupkg.sha512"
+  ],
+  "logs": []
+}
