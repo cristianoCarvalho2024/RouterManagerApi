@@ -17,13 +17,11 @@ public class DatabaseSeeder : IDatabaseSeeder
 
     public async Task SeedAsync()
     {
-        // Executa migrações somente quando o provedor é relacional (não InMemory)
         if (_ctx.Database.IsRelational())
         {
             await _ctx.Database.MigrateAsync();
         }
 
-        // Seed inicial mínimo (se nada existe)
         if (!await _ctx.Providers.AnyAsync())
         {
             var provider = new Provider { Name = "Default ISP" };
@@ -39,7 +37,20 @@ public class DatabaseSeeder : IDatabaseSeeder
             await _ctx.SaveChangesAsync();
         }
 
-        // Vellon - manter apenas a(s) credencial(is) correta(s) para o modelo
+        // Garante Vellon sem setar Id manual
+        if (!await _ctx.Providers.AnyAsync(p => p.Name == "Vellon"))
+        {
+            _ctx.Providers.Add(new Provider { Name = "Vellon" });
+            await _ctx.SaveChangesAsync();
+        }
+        // Garante Wlan
+        if (!await _ctx.Providers.AnyAsync(p => p.Name == "Wlan"))
+        {
+            _ctx.Providers.Add(new Provider { Name = "Wlan" });
+            await _ctx.SaveChangesAsync();
+        }
+
+        // Modelos/credenciais (exemplos) permanecem
         await EnsureProviderModelAndCredentialsExact(
            providerName: "Vellon",
            modelName: "Huawei_EG8145V5_V2",
@@ -53,13 +64,11 @@ public class DatabaseSeeder : IDatabaseSeeder
            modelName: "Huawei_EG8145V5_V2",
            new[] { ("Epadmin", "adminEp") });
 
-        // Wlan - credenciais conhecidas (mantém existentes e adiciona as que faltam)
         await EnsureProviderModelAndCredentials(
             providerName: "Wlan",
             modelName: "Huawei_EG8145V5_V2",
             new[] { ("Epadmin", "adminEp"), ("Epadmin", "6dTa2dhPYrNdcYhu") });
 
-        // Usuário admin padrão
         if (!await _ctx.Users.AnyAsync())
         {
             var user = new User { Username = "admin@local", PasswordHash = BCrypt.Net.BCrypt.HashPassword("Admin#123"), Role = "Admin" };
@@ -70,7 +79,6 @@ public class DatabaseSeeder : IDatabaseSeeder
 
     private async Task EnsureProviderModelAndCredentialsExact(string providerName, string modelName, (string Username, string Password)[] credentials)
     {
-        // Garante provider e model
         var provider = await _ctx.Providers.FirstOrDefaultAsync(p => p.Name == providerName);
         if (provider == null)
         {
@@ -78,7 +86,6 @@ public class DatabaseSeeder : IDatabaseSeeder
             _ctx.Providers.Add(provider);
             await _ctx.SaveChangesAsync();
         }
-
         var model = await _ctx.RouterModels.FirstOrDefaultAsync(m => m.ProviderId == provider.Id && m.Name == modelName);
         if (model == null && Enum.TryParse<RouterModelIdentifier>(modelName, out var parsed))
         {
@@ -90,30 +97,22 @@ public class DatabaseSeeder : IDatabaseSeeder
             _ctx.RouterModels.Add(model);
             await _ctx.SaveChangesAsync();
         }
-
-        // Limpa credenciais que não pertencem ao conjunto fornecido
         var target = credentials.ToHashSet();
         var existing = await _ctx.RouterCredentials.Where(rc => rc.RouterModelId == model.Id).ToListAsync();
         var toRemove = new List<RouterCredential>();
         foreach (var rc in existing)
         {
             var plain = SafeUnprotect(rc.PasswordEncrypted);
-            if (!target.Contains((rc.Username, plain)))
-            {
-                toRemove.Add(rc);
-            }
+            if (!target.Contains((rc.Username, plain))) toRemove.Add(rc);
         }
         if (toRemove.Count > 0)
         {
             _ctx.RouterCredentials.RemoveRange(toRemove);
             await _ctx.SaveChangesAsync();
         }
-
-        // Garante inserção das credenciais alvo que não existam
         var existingSet = (await _ctx.RouterCredentials.Where(rc => rc.RouterModelId == model.Id).ToListAsync())
             .Select(rc => (rc.Username, Plain: SafeUnprotect(rc.PasswordEncrypted)))
             .ToHashSet();
-
         foreach (var cred in credentials)
         {
             if (!existingSet.Contains((cred.Username, cred.Password)))
@@ -131,7 +130,6 @@ public class DatabaseSeeder : IDatabaseSeeder
 
     private async Task EnsureProviderModelAndCredentials(string providerName, string modelName, (string Username, string Password)[] credentials)
     {
-        // Provider
         var provider = await _ctx.Providers.FirstOrDefaultAsync(p => p.Name == providerName);
         if (provider == null)
         {
@@ -139,29 +137,21 @@ public class DatabaseSeeder : IDatabaseSeeder
             _ctx.Providers.Add(provider);
             await _ctx.SaveChangesAsync();
         }
-
-        // Model por Name
         var model = await _ctx.RouterModels.FirstOrDefaultAsync(m => m.ProviderId == provider.Id && m.Name == modelName);
-
-        // Se não encontrou por Name, tenta por EnumIdentifier (parse do texto)
         if (model == null && Enum.TryParse<RouterModelIdentifier>(modelName, out var parsed))
         {
             model = await _ctx.RouterModels.FirstOrDefaultAsync(m => m.ProviderId == provider.Id && m.EnumIdentifier == parsed);
         }
-
         if (model == null)
         {
             model = new RouterModel { Name = modelName, EnumIdentifier = RouterModelIdentifier.Unknown, ProviderId = provider.Id };
             _ctx.RouterModels.Add(model);
             await _ctx.SaveChangesAsync();
         }
-
-        // Carrega credenciais existentes do modelo para evitar duplicação
         var existing = await _ctx.RouterCredentials.Where(rc => rc.RouterModelId == model.Id).ToListAsync();
         var existingSet = existing
             .Select(rc => (rc.Username, Plain: SafeUnprotect(rc.PasswordEncrypted)))
             .ToHashSet();
-
         foreach (var cred in credentials)
         {
             if (!existingSet.Contains((cred.Username, cred.Password)))

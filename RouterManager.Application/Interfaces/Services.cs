@@ -43,6 +43,8 @@ public interface ITelemetryRepository
 public interface IUpdateRepository
 {
     Task<UpdatePackage?> GetApplicableAsync(int providerId, string modelIdentifier, string firmwareVersion, CancellationToken ct = default);
+    Task<UpdatePackage?> FindSpecificAsync(int providerId, string modelIdentifier, string serialNumber, CancellationToken ct = default);
+    Task<UpdatePackage?> FindGenericAsync(int providerId, string modelIdentifier, string? firmwareVersion, CancellationToken ct = default);
 }
 
 public interface IUserRepository

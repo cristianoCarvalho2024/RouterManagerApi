@@ -12,13 +12,24 @@ namespace RouterManager.Api.Controllers;
 public class UpdatesController : ControllerBase
 {
     private readonly IUpdateService _updateService;
-    public UpdatesController(IUpdateService updateService) => _updateService = updateService;
+    private readonly ILogger<UpdatesController> _logger;
+
+    public UpdatesController(IUpdateService updateService, ILogger<UpdatesController> logger)
+    {
+        _updateService = updateService;
+        _logger = logger;
+    }
 
     [HttpPost("check")]
     [ProducesResponseType(typeof(UpdatePackageResponse), 200)]
     [ProducesResponseType(204)]
     public async Task<IActionResult> Check([FromBody] CheckForUpdateRequest request, CancellationToken ct)
     {
+        _logger.LogInformation("Recebido pedido de verificação de atualização com os seguintes dados:");
+        _logger.LogInformation("ProviderId: {ProviderId}", request.ProviderId);
+        _logger.LogInformation("ModelIdentifier: '{ModelIdentifier}'", request.ModelIdentifier);
+        _logger.LogInformation("SerialNumber: '{SerialNumber}'", request.SerialNumber);
+
         var result = await _updateService.CheckAsync(request, ct);
         if (result == null || string.IsNullOrWhiteSpace(result.RequestPayload)) return NoContent();
         return Ok(result);

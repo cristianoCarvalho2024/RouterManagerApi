@@ -1,0 +1,85 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using RouterManager.Infrastructure.Persistence;
+using RouterManager.Domain.Entities;
+
+namespace RouterManager.Api.Controllers;
+
+[ApiController]
+[Route("api/admin/providers")]
+[Authorize(Roles = "Admin")]
+public class AdminProvidersController : ControllerBase
+{
+    private readonly RouterManagerDbContext _db;
+    public AdminProvidersController(RouterManagerDbContext db) => _db = db;
+
+    public record ProviderRequest(string Name);
+
+    // Lista todas as provedoras
+    [HttpGet]
+    [ProducesResponseType(200)]
+    public async Task<IActionResult> GetAll(CancellationToken ct)
+    {
+        var list = await _db.Providers.AsNoTracking().OrderBy(p => p.Name).Select(p => new { p.Id, p.Name }).ToListAsync(ct);
+        return Ok(list);
+    }
+
+    [HttpPost]
+    [ProducesResponseType(typeof(object), 201)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(409)]
+    public async Task<IActionResult> Create([FromBody] ProviderRequest req, CancellationToken ct)
+    {
+        if (string.IsNullOrWhiteSpace(req.Name)) return BadRequest("Name requerido");
+        var exists = await _db.Providers.AnyAsync(p => p.Name == req.Name, ct);
+        if (exists) return Conflict("Já existe uma provedora com esse nome.");
+
+        var entity = new Provider { Name = req.Name.Trim() };
+        _db.Providers.Add(entity);
+        await _db.SaveChangesAsync(ct);
+        return CreatedAtAction(nameof(GetById), new { id = entity.Id }, new { entity.Id, entity.Name });
+    }
+
+    [HttpPut("{id:int}")]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(404)]
+    [ProducesResponseType(409)]
+    public async Task<IActionResult> Update(int id, [FromBody] ProviderRequest req, CancellationToken ct)
+    {
+        if (string.IsNullOrWhiteSpace(req.Name)) return BadRequest("Name requerido");
+        var entity = await _db.Providers.FirstOrDefaultAsync(p => p.Id == id, ct);
+        if (entity == null) return NotFound();
+        var nameInUse = await _db.Providers.AnyAsync(p => p.Name == req.Name && p.Id != id, ct);
+        if (nameInUse) return Conflict("Já existe uma provedora com esse nome.");
+        entity.Name = req.Name.Trim();
+        await _db.SaveChangesAsync(ct);
+        return NoContent();
+    }
+
+    [HttpDelete("{id:int}")]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(404)]
+    [ProducesResponseType(409)]
+    public async Task<IActionResult> Delete(int id, CancellationToken ct)
+    {
+        var entity = await _db.Providers.FirstOrDefaultAsync(p => p.Id == id, ct);
+        if (entity == null) return NotFound();
+        var inUse = await _db.RouterModels.AnyAsync(m => m.ProviderId == id, ct);
+        if (inUse) return Conflict("Provedora em uso por modelos. Remova/atualize os modelos antes de apagar.");
+        _db.Providers.Remove(entity);
+        await _db.SaveChangesAsync(ct);
+        return NoContent();
+    }
+
+    [HttpGet("{id:int}")]
+    [ProducesResponseType(200)]
+    [ProducesResponseType(404)]
+    public async Task<IActionResult> GetById(int id, CancellationToken ct)
+    {
+        var e = await _db.Providers.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id, ct);
+        if (e == null) return NotFound();
+        return Ok(new { e.Id, e.Name });
+    }
+}
