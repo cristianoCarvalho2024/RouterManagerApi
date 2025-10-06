@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RouterManager.Api</name>
+    </assembly>
+    <members>
+        <member name="T:RouterManager.Api.Controllers.UpdateOrdersController.CreateOrderRequest">
+             <summary>
+             Cria uma nova ordem de atualização remota (RemoteAction).
+             </summary>
+             <remarks>
+             Envie requestPayload como OBJETO JSON (não string). Exemplos:
+            
+             HttpDownload:
+             {
+               "providerId": 5,
+               "modelIdentifier": "Huawei_EG8145V5_V2",
+               "firmwareVersion": null,
+               "requestPayload": {
+                 "ActionType": "HttpDownload",
+                 "Payload": {
+                   "Url": "http://example.com/firmware.bin",
+                   "Method": "GET",
+                   "Headers": { "X-Custom-Header": "value" },
+                   "Body": null,
+                   "TimeoutSeconds": 300
+                 }
+               }
+             }
+            
+             RouterCommand:
+             {
+               "providerId": 5,
+               "modelIdentifier": "Huawei_EG8145V5_V2",
+               "firmwareVersion": null,
+               "requestPayload": {
+                 "ActionType": "RouterCommand",
+                 "Payload": {
+                   "Command": "CreateGuestNetwork",
+                   "TargetService": "IWifiConfigurationService",
+                   "Parameters": {
+                     "Ssid": "MinhaRedeDeConvidados",
+                     "Password": "senha_forte_123",
+                     "IsEnabled": true
+                   }
+                 }
+               }
+             }
+             </remarks>
+        </member>
+        <member name="M:RouterManager.Api.Controllers.UpdateOrdersController.CreateOrderRequest.#ctor(System.Int32,System.String,System.String,RouterManager.Api.Models.RemoteActionEnvelope)">
+             <summary>
+             Cria uma nova ordem de atualização remota (RemoteAction).
+             </summary>
+             <remarks>
+             Envie requestPayload como OBJETO JSON (não string). Exemplos:
+            
+             HttpDownload:
+             {
+               "providerId": 5,
+               "modelIdentifier": "Huawei_EG8145V5_V2",
+               "firmwareVersion": null,
+               "requestPayload": {
+                 "ActionType": "HttpDownload",
+                 "Payload": {
+                   "Url": "http://example.com/firmware.bin",
+                   "Method": "GET",
+                   "Headers": { "X-Custom-Header": "value" },
+                   "Body": null,
+                   "TimeoutSeconds": 300
+                 }
+               }
+             }
+            
+             RouterCommand:
+             {
+               "providerId": 5,
+               "modelIdentifier": "Huawei_EG8145V5_V2",
+               "firmwareVersion": null,
+               "requestPayload": {
+                 "ActionType": "RouterCommand",
+                 "Payload": {
+                   "Command": "CreateGuestNetwork",
+                   "TargetService": "IWifiConfigurationService",
+                   "Parameters": {
+                     "Ssid": "MinhaRedeDeConvidados",
+                     "Password": "senha_forte_123",
+                     "IsEnabled": true
+                   }
+                 }
+               }
+             }
+             </remarks>
+        </member>
+        <member name="M:RouterManager.Api.Controllers.UpdateOrdersController.Create(RouterManager.Api.Controllers.UpdateOrdersController.CreateOrderRequest,System.Threading.CancellationToken)">
+            <summary>
+            Cadastra uma ordem.
+            </summary>
+            <param name="req">Critérios e o JSON com a ação remota.</param>
+        </member>
+        <member name="M:RouterManager.Api.Controllers.UpdateOrdersController.GetById(System.Int32,System.Threading.CancellationToken)">
+            <summary>
+            Retorna a ordem cadastrada.
+            </summary>
+        </member>
+    </members>
+</doc>
