@@ -198,6 +198,7 @@ using (var scope = app.Services.CreateScope())
 
 app.UseSerilogRequestLogging();
 app.UseGlobalExceptionHandling();
+app.UseMiddleware<ApiAuditMiddleware>();
 app.UseHttpsRedirection();
 app.UseCors(MyAllowSpecificOrigins);
 

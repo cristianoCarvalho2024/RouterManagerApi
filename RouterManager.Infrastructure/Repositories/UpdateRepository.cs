@@ -13,8 +13,10 @@ public class UpdateRepository : IUpdateRepository
     public async Task<UpdatePackage?> GetApplicableAsync(int providerId, string modelIdentifier, string firmwareVersion, CancellationToken ct = default)
     {
         return await _ctx.UpdatePackages
-            .Include(p => p.Actions)
+            .AsNoTracking()
             .OrderByDescending(p => p.Id)
-            .FirstOrDefaultAsync(ct);
+            .FirstOrDefaultAsync(p => p.ProviderId == providerId
+                && (p.ModelIdentifier == modelIdentifier || p.ModelIdentifier == "*")
+                && (p.FirmwareVersion == null || p.FirmwareVersion == firmwareVersion), ct);
     }
 }

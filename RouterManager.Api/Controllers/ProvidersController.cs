@@ -20,6 +20,17 @@ public class ProvidersController : ControllerBase
         return Ok(list.Select(p => new { p.Id, p.Name }));
     }
 
+    // Busca provider por nome (case-insensitive): facilita o app evitar roundtrip completo
+    [HttpGet("by-name")]
+    public async Task<IActionResult> GetByName([FromQuery] string name, CancellationToken ct)
+    {
+        if (string.IsNullOrWhiteSpace(name)) return BadRequest("name requerido");
+        var list = await _service.GetAllAsync(ct);
+        var match = list.FirstOrDefault(p => string.Equals(p.Name, name, StringComparison.OrdinalIgnoreCase));
+        if (match == null) return NotFound();
+        return Ok(new { match.Id, match.Name });
+    }
+
     [HttpGet("{id}/credentials")]
     public async Task<IActionResult> GetCredentials(int id, [FromQuery] string model, CancellationToken ct)
     {

@@ -43,7 +43,15 @@ public class DatabaseSeeder : IDatabaseSeeder
         await EnsureProviderModelAndCredentialsExact(
            providerName: "Vellon",
            modelName: "Huawei_EG8145V5_V2",
+           new[] { ("Epadmin", "alfateste2001") });
+        await EnsureProviderModelAndCredentialsExact(
+           providerName: "Vellon",
+           modelName: "Huawei_EG8145V5_V2",
            new[] { ("Epadmin", "6dTa2dhPYrNdcYhu") });
+        await EnsureProviderModelAndCredentialsExact(
+           providerName: "Vellon",
+           modelName: "Huawei_EG8145V5_V2",
+           new[] { ("Epadmin", "adminEp") });
 
         // Wlan - credenciais conhecidas (mantém existentes e adiciona as que faltam)
         await EnsureProviderModelAndCredentials(

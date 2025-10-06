@@ -14,13 +14,7 @@ public class UpdateService : IUpdateService
         if (pkg == null) return null;
         return new UpdatePackageResponse
         {
-            UpdateId = pkg.Id.ToString(),
-            TargetVersion = pkg.TargetVersion,
-            Description = pkg.Description,
-            Actions = pkg.Actions
-                .OrderBy(a => a.Order)
-                .Select(a => new UpdateActionItem(a.Order, a.Service, a.Method, a.ParamsJson))
-                .ToList()
+            RequestPayload = pkg.RequestPayload
         };
     }
 }

@@ -3,7 +3,13 @@ namespace RouterManager.Domain.Entities;
 public class UpdatePackage
 {
     public int Id { get; set; }
-    public string TargetVersion { get; set; } = string.Empty;
-    public string Description { get; set; } = string.Empty;
-    public ICollection<UpdateAction> Actions { get; set; } = new List<UpdateAction>();
+    // Critérios de aplicação
+    public int ProviderId { get; set; }
+    public string ModelIdentifier { get; set; } = string.Empty;
+    public string? FirmwareVersion { get; set; }
+
+    // Ordem de atualização serializada em JSON para o app executar via HttpExecuter
+    public string RequestPayload { get; set; } = string.Empty;
+
+    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 }

@@ -20,7 +20,7 @@ public class UpdatesController : ControllerBase
     public async Task<IActionResult> Check([FromBody] CheckForUpdateRequest request, CancellationToken ct)
     {
         var result = await _updateService.CheckAsync(request, ct);
-        if (result == null) return NoContent();
+        if (result == null || string.IsNullOrWhiteSpace(result.RequestPayload)) return NoContent();
         return Ok(result);
     }
 }

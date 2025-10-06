@@ -1,0 +1,47 @@
+using System.Diagnostics;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
+
+namespace RouterManager.Api.Middleware;
+
+public class ApiAuditMiddleware
+{
+    private readonly RequestDelegate _next;
+    private readonly ILogger<ApiAuditMiddleware> _logger;
+
+    public ApiAuditMiddleware(RequestDelegate next, ILogger<ApiAuditMiddleware> logger)
+    {
+        _next = next;
+        _logger = logger;
+    }
+
+    public async Task InvokeAsync(HttpContext context)
+    {
+        var sw = Stopwatch.StartNew();
+        var path = context.Request.Path.ToString();
+        var method = context.Request.Method;
+        var query = context.Request.QueryString.HasValue ? context.Request.QueryString.Value : string.Empty;
+        var ip = context.Connection.RemoteIpAddress?.ToString();
+        var hasBearer = context.Request.Headers.ContainsKey("Authorization");
+        var hasApiKey = context.Request.Headers.ContainsKey("X-Api-Key");
+
+        _logger.LogInformation("[API AUDIT] => {Method} {Path}{Query} from {Ip} | Headers: Bearer={HasBearer} ApiKey={HasApiKey}",
+            method, path, query, ip, hasBearer, hasApiKey);
+
+        // Extra: log parâmetros relevantes para endpoints de credenciais
+        if (path.StartsWith("/api/v1/credentials", StringComparison.OrdinalIgnoreCase))
+        {
+            var providerId = context.Request.Query["providerId"].ToString();
+            var modelIdentifier = context.Request.Query["modelIdentifier"].ToString();
+            var providerName = context.Request.Query["providerName"].ToString();
+            _logger.LogInformation("[API AUDIT] Credentials query => providerId={ProviderId} providerName={ProviderName} modelIdentifier={Model}",
+                providerId, providerName, modelIdentifier);
+        }
+
+        await _next(context);
+        sw.Stop();
+
+        _logger.LogInformation("[API AUDIT] <= {StatusCode} {Method} {Path} in {ElapsedMs} ms",
+            context.Response.StatusCode, method, path, sw.ElapsedMilliseconds);
+    }
+}

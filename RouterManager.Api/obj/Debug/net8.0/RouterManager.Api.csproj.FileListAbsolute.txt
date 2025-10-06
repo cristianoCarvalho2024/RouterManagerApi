@@ -179,3 +179,4 @@ C:\Users\Cristiano\Desktop\RouterManagerApi\RouterManager.Api\bin\Debug\net8.0\S
 C:\Users\Cristiano\Desktop\RouterManagerApi\RouterManager.Api\bin\Debug\net8.0\Serilog.Sinks.File.dll
 C:\Users\Cristiano\Desktop\RouterManagerApi\RouterManager.Api\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.Versioning.dll
 C:\Users\Cristiano\Desktop\RouterManagerApi\RouterManager.Api\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll
+C:\Users\Cristiano\Desktop\RouterManagerApi\RouterManager.Api\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
