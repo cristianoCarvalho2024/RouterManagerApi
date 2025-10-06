@@ -20,54 +20,12 @@ public class UpdateOrdersController : ControllerBase
     /// Cria uma nova ordem de atualização remota (RemoteAction).
     /// </summary>
     /// <remarks>
-    /// Envie requestPayload como OBJETO JSON (não string). Exemplos:
-    ///
-    /// HttpDownload:
-    /// {
-    ///   "providerId": 5,
-    ///   "modelIdentifier": "Huawei_EG8145V5_V2",
-    ///   "firmwareVersion": null,
-    ///   "requestPayload": {
-    ///     "ActionType": "HttpDownload",
-    ///     "Payload": {
-    ///       "Url": "http://example.com/firmware.bin",
-    ///       "Method": "GET",
-    ///       "Headers": { "X-Custom-Header": "value" },
-    ///       "Body": null,
-    ///       "TimeoutSeconds": 300
-    ///     }
-    ///   }
-    /// }
-    ///
-    /// RouterCommand:
-    /// {
-    ///   "providerId": 5,
-    ///   "modelIdentifier": "Huawei_EG8145V5_V2",
-    ///   "firmwareVersion": null,
-    ///   "requestPayload": {
-    ///     "ActionType": "RouterCommand",
-    ///     "Payload": {
-    ///       "Command": "CreateGuestNetwork",
-    ///       "TargetService": "IWifiConfigurationService",
-    ///       "Parameters": {
-    ///         "Ssid": "MinhaRedeDeConvidados",
-    ///         "Password": "senha_forte_123",
-    ///         "IsEnabled": true
-    ///       }
-    ///     }
-    ///   }
-    /// }
+    /// Envie requestPayload como OBJETO JSON (não string). Suporta SerialNumber opcional para direcionar um dispositivo específico.
     /// </remarks>
-    public record CreateOrderRequest(int ProviderId, string ModelIdentifier, string? FirmwareVersion, RemoteActionEnvelope RequestPayload);
-
-    /// <summary>
-    /// Cadastra uma ordem.
-    /// </summary>
-    /// <param name="req">Critérios e o JSON com a ação remota.</param>
     [HttpPost]
     [ProducesResponseType(typeof(object), 201)]
     [ProducesResponseType(400)]
-    public async Task<IActionResult> Create([FromBody] CreateOrderRequest req, CancellationToken ct)
+    public async Task<IActionResult> Create([FromBody] CreateUpdateOrderRequest req, CancellationToken ct)
     {
         if (req.RequestPayload == null || string.IsNullOrWhiteSpace(req.RequestPayload.ActionType))
             return BadRequest("RequestPayload.ActionType requerido");
@@ -75,26 +33,30 @@ public class UpdateOrdersController : ControllerBase
         switch (req.RequestPayload.ActionType)
         {
             case RemoteActionTypes.HttpDownload:
+            {
                 var http = req.RequestPayload.Payload.Deserialize<HttpDownloadPayload>();
                 if (http == null || string.IsNullOrWhiteSpace(http.Url))
                     return BadRequest("Payload.HttpDownload.Url requerido");
                 break;
+            }
             case RemoteActionTypes.RouterCommand:
+            {
                 var cmd = req.RequestPayload.Payload.Deserialize<RouterCommandPayload>();
                 if (cmd == null || string.IsNullOrWhiteSpace(cmd.Command) || string.IsNullOrWhiteSpace(cmd.TargetService))
                     return BadRequest("Payload.RouterCommand.Command e TargetService requeridos");
                 break;
+            }
             default:
                 return BadRequest("ActionType não suportado");
         }
 
-        // Serializa o objeto recebido para armazenar em texto no banco
         var payloadJson = JsonSerializer.Serialize(req.RequestPayload);
 
         var entity = new UpdatePackage
         {
             ProviderId = req.ProviderId,
             ModelIdentifier = req.ModelIdentifier,
+            SerialNumber = req.SerialNumber,
             FirmwareVersion = req.FirmwareVersion,
             RequestPayload = payloadJson,
             CreatedAt = DateTime.UtcNow
@@ -114,6 +76,6 @@ public class UpdateOrdersController : ControllerBase
     {
         var e = await _db.UpdatePackages.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id, ct);
         if (e == null) return NotFound();
-        return Ok(new { e.Id, e.ProviderId, e.ModelIdentifier, e.FirmwareVersion, e.RequestPayload, e.CreatedAt });
+        return Ok(new { e.Id, e.ProviderId, e.ModelIdentifier, e.SerialNumber, e.FirmwareVersion, e.RequestPayload, e.CreatedAt });
     }
 }

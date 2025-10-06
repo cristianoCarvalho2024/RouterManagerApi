@@ -2,9 +2,10 @@ using System.Text.Json.Serialization;
 
 namespace RouterManager.Shared.Dtos.Requests;
 
-public record CheckForUpdateRequest(
-    [property: JsonPropertyName("serialNumber")] string SerialNumber,
-    [property: JsonPropertyName("currentFirmwareVersion")] string FirmwareVersion,
-    [property: JsonPropertyName("modelIdentifier")] string ModelIdentifier,
-    [property: JsonPropertyName("providerId")] int ProviderId
-);
+public class CheckForUpdateRequest
+{
+    [property: JsonPropertyName("providerId")] public int ProviderId { get; set; }
+    [property: JsonPropertyName("modelIdentifier")] public string ModelIdentifier { get; set; } = string.Empty;
+    [property: JsonPropertyName("serialNumber")] public string SerialNumber { get; set; } = string.Empty;
+    [property: JsonPropertyName("currentFirmwareVersion")] public string FirmwareVersion { get; set; } = string.Empty;
+}

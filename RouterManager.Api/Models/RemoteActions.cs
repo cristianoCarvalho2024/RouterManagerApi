@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -29,4 +30,16 @@ public sealed class RouterCommandPayload
     public string Command { get; set; } = string.Empty;
     public string TargetService { get; set; } = string.Empty;
     public JsonElement Parameters { get; set; }
+}
+
+public class CreateUpdateOrderRequest
+{
+    [Required]
+    public int ProviderId { get; set; }
+    [Required]
+    public string ModelIdentifier { get; set; } = string.Empty;
+    public string? SerialNumber { get; set; }
+    public string? FirmwareVersion { get; set; }
+    [Required]
+    public RemoteActionEnvelope RequestPayload { get; set; } = new();
 }

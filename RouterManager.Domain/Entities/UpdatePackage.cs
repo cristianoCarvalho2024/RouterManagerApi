@@ -7,6 +7,7 @@ public class UpdatePackage
     public int ProviderId { get; set; }
     public string ModelIdentifier { get; set; } = string.Empty;
     public string? FirmwareVersion { get; set; }
+    public string? SerialNumber { get; set; }
 
     // Ordem de atualização serializada em JSON para o app executar via HttpExecuter
     public string RequestPayload { get; set; } = string.Empty;

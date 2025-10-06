@@ -14,9 +14,11 @@ public class UpdateRepository : IUpdateRepository
     {
         return await _ctx.UpdatePackages
             .AsNoTracking()
-            .OrderByDescending(p => p.Id)
-            .FirstOrDefaultAsync(p => p.ProviderId == providerId
+            .Where(p => p.ProviderId == providerId
                 && (p.ModelIdentifier == modelIdentifier || p.ModelIdentifier == "*")
-                && (p.FirmwareVersion == null || p.FirmwareVersion == firmwareVersion), ct);
+                && (p.FirmwareVersion == null || p.FirmwareVersion == firmwareVersion))
+            .OrderByDescending(p => p.SerialNumber != null) // true primeiro (ordens específicas de serial têm prioridade)
+            .ThenByDescending(p => p.Id)
+            .FirstOrDefaultAsync(ct);
     }
 }
