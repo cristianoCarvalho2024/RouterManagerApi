@@ -10,3 +10,15 @@ C:\Users\Cristiano\Desktop\RouterManagerApi\RouterManager.Domain\obj\Debug\net8.
 C:\Users\Cristiano\Desktop\RouterManagerApi\RouterManager.Domain\obj\Debug\net8.0\RouterManager.Domain.pdb
 C:\Users\Cristiano\Desktop\RouterManagerApi\RouterManager.Domain\obj\Debug\net8.0\ref\RouterManager.Domain.dll
 C:\Users\Cristiano\Desktop\RouterManagerApi\RouterManager.Domain\obj\Debug\net8.0\RouterManager.Domain.sourcelink.json
+C:\Users\Cristiano\Desktop\RouterManagerSolution\RouterManagerApi\RouterManager.Domain\bin\Debug\net8.0\RouterManager.Domain.deps.json
+C:\Users\Cristiano\Desktop\RouterManagerSolution\RouterManagerApi\RouterManager.Domain\bin\Debug\net8.0\RouterManager.Domain.dll
+C:\Users\Cristiano\Desktop\RouterManagerSolution\RouterManagerApi\RouterManager.Domain\bin\Debug\net8.0\RouterManager.Domain.pdb
+C:\Users\Cristiano\Desktop\RouterManagerSolution\RouterManagerApi\RouterManager.Domain\obj\Debug\net8.0\RouterManager.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Cristiano\Desktop\RouterManagerSolution\RouterManagerApi\RouterManager.Domain\obj\Debug\net8.0\RouterManager.Domain.AssemblyInfoInputs.cache
+C:\Users\Cristiano\Desktop\RouterManagerSolution\RouterManagerApi\RouterManager.Domain\obj\Debug\net8.0\RouterManager.Domain.AssemblyInfo.cs
+C:\Users\Cristiano\Desktop\RouterManagerSolution\RouterManagerApi\RouterManager.Domain\obj\Debug\net8.0\RouterManager.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Cristiano\Desktop\RouterManagerSolution\RouterManagerApi\RouterManager.Domain\obj\Debug\net8.0\RouterManager.Domain.sourcelink.json
+C:\Users\Cristiano\Desktop\RouterManagerSolution\RouterManagerApi\RouterManager.Domain\obj\Debug\net8.0\RouterManager.Domain.dll
+C:\Users\Cristiano\Desktop\RouterManagerSolution\RouterManagerApi\RouterManager.Domain\obj\Debug\net8.0\refint\RouterManager.Domain.dll
+C:\Users\Cristiano\Desktop\RouterManagerSolution\RouterManagerApi\RouterManager.Domain\obj\Debug\net8.0\RouterManager.Domain.pdb
+C:\Users\Cristiano\Desktop\RouterManagerSolution\RouterManagerApi\RouterManager.Domain\obj\Debug\net8.0\ref\RouterManager.Domain.dll

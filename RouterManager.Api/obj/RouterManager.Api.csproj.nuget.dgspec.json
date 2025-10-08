@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\RouterManager.Api.csproj": {}
+    "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\RouterManager.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\RouterManager.Api.csproj": {
+    "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\RouterManager.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\RouterManager.Api.csproj",
+        "projectUniqueName": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\RouterManager.Api.csproj",
         "projectName": "RouterManager.Api",
-        "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\RouterManager.Api.csproj",
+        "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\RouterManager.Api.csproj",
         "packagesPath": "C:\\Users\\Cristiano\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\obj\\",
+        "outputPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,14 +33,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Application\\RouterManager.Application.csproj": {
-                "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Application\\RouterManager.Application.csproj"
+              "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Application\\RouterManager.Application.csproj": {
+                "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Application\\RouterManager.Application.csproj"
               },
-              "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Infrastructure\\RouterManager.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Infrastructure\\RouterManager.Infrastructure.csproj"
+              "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Infrastructure\\RouterManager.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Infrastructure\\RouterManager.Infrastructure.csproj"
               },
-              "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\RouterManager.Shared.csproj": {
-                "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\RouterManager.Shared.csproj"
+              "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\RouterManager.Shared.csproj": {
+                "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\RouterManager.Shared.csproj"
               }
             }
           }
@@ -123,14 +123,14 @@
         }
       }
     },
-    "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Application\\RouterManager.Application.csproj": {
+    "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Application\\RouterManager.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Application\\RouterManager.Application.csproj",
+        "projectUniqueName": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Application\\RouterManager.Application.csproj",
         "projectName": "RouterManager.Application",
-        "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Application\\RouterManager.Application.csproj",
+        "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Application\\RouterManager.Application.csproj",
         "packagesPath": "C:\\Users\\Cristiano\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Application\\obj\\",
+        "outputPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -152,11 +152,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Domain\\RouterManager.Domain.csproj": {
-                "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Domain\\RouterManager.Domain.csproj"
+              "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Domain\\RouterManager.Domain.csproj": {
+                "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Domain\\RouterManager.Domain.csproj"
               },
-              "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\RouterManager.Shared.csproj": {
-                "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\RouterManager.Shared.csproj"
+              "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\RouterManager.Shared.csproj": {
+                "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\RouterManager.Shared.csproj"
               }
             }
           }
@@ -214,14 +214,14 @@
         }
       }
     },
-    "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Domain\\RouterManager.Domain.csproj": {
+    "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Domain\\RouterManager.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Domain\\RouterManager.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Domain\\RouterManager.Domain.csproj",
         "projectName": "RouterManager.Domain",
-        "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Domain\\RouterManager.Domain.csproj",
+        "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Domain\\RouterManager.Domain.csproj",
         "packagesPath": "C:\\Users\\Cristiano\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Domain\\obj\\",
+        "outputPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -280,14 +280,14 @@
         }
       }
     },
-    "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Infrastructure\\RouterManager.Infrastructure.csproj": {
+    "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Infrastructure\\RouterManager.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Infrastructure\\RouterManager.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Infrastructure\\RouterManager.Infrastructure.csproj",
         "projectName": "RouterManager.Infrastructure",
-        "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Infrastructure\\RouterManager.Infrastructure.csproj",
+        "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Infrastructure\\RouterManager.Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Cristiano\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -309,14 +309,14 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Application\\RouterManager.Application.csproj": {
-                "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Application\\RouterManager.Application.csproj"
+              "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Application\\RouterManager.Application.csproj": {
+                "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Application\\RouterManager.Application.csproj"
               },
-              "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Domain\\RouterManager.Domain.csproj": {
-                "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Domain\\RouterManager.Domain.csproj"
+              "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Domain\\RouterManager.Domain.csproj": {
+                "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Domain\\RouterManager.Domain.csproj"
               },
-              "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\RouterManager.Shared.csproj": {
-                "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\RouterManager.Shared.csproj"
+              "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\RouterManager.Shared.csproj": {
+                "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\RouterManager.Shared.csproj"
               }
             }
           }
@@ -398,14 +398,14 @@
         }
       }
     },
-    "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\RouterManager.Shared.csproj": {
+    "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\RouterManager.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\RouterManager.Shared.csproj",
+        "projectUniqueName": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\RouterManager.Shared.csproj",
         "projectName": "RouterManager.Shared",
-        "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\RouterManager.Shared.csproj",
+        "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\RouterManager.Shared.csproj",
         "packagesPath": "C:\\Users\\Cristiano\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\obj\\",
+        "outputPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

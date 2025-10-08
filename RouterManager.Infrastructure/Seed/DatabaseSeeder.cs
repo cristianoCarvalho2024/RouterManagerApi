@@ -69,10 +69,33 @@ public class DatabaseSeeder : IDatabaseSeeder
             modelName: "Huawei_EG8145V5_V2",
             new[] { ("Epadmin", "adminEp"), ("Epadmin", "6dTa2dhPYrNdcYhu") });
 
-        if (!await _ctx.Users.AnyAsync())
+        // Garantir admin@local (Admin#123) e role Admin em DEV/seed
+        await EnsureAdminUserAsync();
+    }
+
+    private async Task EnsureAdminUserAsync()
+    {
+        var user = await _ctx.Users.FirstOrDefaultAsync(u => u.Username == "admin@local");
+        if (user == null)
         {
-            var user = new User { Username = "admin@local", PasswordHash = BCrypt.Net.BCrypt.HashPassword("Admin#123"), Role = "Admin" };
+            user = new User { Username = "admin@local", PasswordHash = BCrypt.Net.BCrypt.HashPassword("Admin#123"), Role = "Admin" };
             _ctx.Users.Add(user);
+            await _ctx.SaveChangesAsync();
+            return;
+        }
+        bool changed = false;
+        if (string.IsNullOrWhiteSpace(user.Role) || !string.Equals(user.Role, "Admin", StringComparison.Ordinal))
+        {
+            user.Role = "Admin";
+            changed = true;
+        }
+        if (!BCrypt.Net.BCrypt.Verify("Admin#123", user.PasswordHash))
+        {
+            user.PasswordHash = BCrypt.Net.BCrypt.HashPassword("Admin#123");
+            changed = true;
+        }
+        if (changed)
+        {
             await _ctx.SaveChangesAsync();
         }
     }

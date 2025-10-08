@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Domain\\RouterManager.Domain.csproj": {}
+    "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Domain\\RouterManager.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Domain\\RouterManager.Domain.csproj": {
+    "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Domain\\RouterManager.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Domain\\RouterManager.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Domain\\RouterManager.Domain.csproj",
         "projectName": "RouterManager.Domain",
-        "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Domain\\RouterManager.Domain.csproj",
+        "projectPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Domain\\RouterManager.Domain.csproj",
         "packagesPath": "C:\\Users\\Cristiano\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Domain\\obj\\",
+        "outputPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

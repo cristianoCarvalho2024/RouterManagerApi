@@ -49,6 +49,34 @@ public class RouterProfilesController : ControllerBase
         return CreatedAtAction(nameof(GetById), new { id = entity.Id }, new { entity.Id });
     }
 
+    // Lista todos os perfis do usuário autenticado
+    [HttpGet]
+    public async Task<IActionResult> GetAllForCurrentUser(CancellationToken ct)
+    {
+        var username = User?.Identity?.Name ?? User.FindFirstValue(ClaimTypes.Name);
+        if (string.IsNullOrEmpty(username)) return Unauthorized();
+
+        var user = await _db.Users.AsNoTracking().FirstOrDefaultAsync(u => u.Username == username, ct);
+        if (user == null) return Unauthorized();
+
+        var profiles = await _db.RouterProfiles
+            .AsNoTracking()
+            .Where(p => p.UserId == user.Id)
+            .OrderByDescending(p => p.CreatedAt)
+            .Select(p => new
+            {
+                p.Id,
+                p.Ip,
+                p.Username,
+                p.SerialNumber,
+                p.Model,
+                p.CreatedAt
+            })
+            .ToListAsync(ct);
+
+        return Ok(profiles);
+    }
+
     [HttpGet("{id:int}")]
     public async Task<IActionResult> GetById(int id, CancellationToken ct)
     {

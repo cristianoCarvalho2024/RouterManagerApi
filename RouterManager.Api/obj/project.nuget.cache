@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1eOZZjMMbXg=",
+  "dgSpecHash": "ij3QEgxLqEI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\RouterManager.Api.csproj",
+  "projectFilePath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\RouterManager.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Cristiano\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Cristiano\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

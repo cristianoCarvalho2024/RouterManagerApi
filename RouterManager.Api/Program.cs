@@ -35,70 +35,8 @@ services
         opts.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
         opts.JsonSerializerOptions.WriteIndented = false;
     });
-services.AddValidatorsFromAssemblyContaining<Program>();
-services.AddFluentValidationAutoValidation();
-services.AddFluentValidationClientsideAdapters();
-services.AddEndpointsApiExplorer();
 
-// API Versioning oficial
-services.AddApiVersioning(options =>
-{
-    options.DefaultApiVersion = new ApiVersion(1, 0);
-    options.AssumeDefaultVersionWhenUnspecified = true;
-    options.ReportApiVersions = true;
-    options.ApiVersionReader = ApiVersionReader.Combine(
-        new UrlSegmentApiVersionReader(),
-        new HeaderApiVersionReader("x-api-version"),
-        new QueryStringApiVersionReader("api-version")
-    );
-});
-services.AddVersionedApiExplorer(options =>
-{
-    options.GroupNameFormat = "'v'VVV"; // v1, v1.0, etc
-    options.SubstituteApiVersionInUrl = true;
-});
-
-services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "RouterManager API", Version = "v1" });
-
-    c.AddSecurityDefinition("X-Api-Key", new OpenApiSecurityScheme
-    {
-        Name = "X-Api-Key",
-        Type = SecuritySchemeType.ApiKey,
-        In = ParameterLocation.Header,
-        Description = "Informe a API Key no header"
-    });
-    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
-    {
-        Name = "Authorization",
-        Type = SecuritySchemeType.Http,
-        Scheme = "bearer",
-        BearerFormat = "JWT",
-        In = ParameterLocation.Header,
-        Description = "JWT Bearer token"
-    });
-
-    c.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
-            },
-            Array.Empty<string>()
-        },
-        {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "X-Api-Key" }
-            },
-            Array.Empty<string>()
-        }
-    });
-});
-services.AddDataProtection();
-
+// CORS: inclui portas do AdminWeb
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 services.AddCors(options =>
 {
@@ -108,13 +46,24 @@ services.AddCors(options =>
                 "http://localhost",
                 "https://localhost",
                 "https://localhost:7070",
-                "http://localhost:5283",
-                "https://localhost:44386"
+                "http://localhost:5283",   // API HTTP dev
+                "https://localhost:44386",
+                "http://localhost:5134",   // AdminWeb HTTP
+                "https://localhost:7183"    // AdminWeb HTTPS
             )
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
 });
+
+// Evita 400 automáticos por ModelState
+services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
+});
+
+// Health checks necessários para MapHealthChecks
+services.AddHealthChecks();
 
 var conn = configuration.GetConnectionString("Default") ?? "Server=localhost;Database=RouterManagerDb;Trusted_Connection=True;TrustServerCertificate=True";
 services.AddDbContext<RouterManagerDbContext>(o => o.UseSqlServer(conn));
@@ -136,8 +85,8 @@ services.AddScoped<IProvidersService, ProvidersService>();
 services.AddScoped<IDatabaseSeeder, DatabaseSeeder>();
 services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-// JWT para endpoints [Authorize]
-var jwtKey = configuration["Jwt:Key"] ?? "dev-secret-key-change"; // agora tem >= 256 bits
+// JWT
+var jwtKey = configuration["Jwt:Key"] ?? "dev-secret-key-change";
 var jwtIssuer = configuration["Jwt:Issuer"] ?? "RouterManager";
 var keyBytes = Encoding.UTF8.GetBytes(jwtKey);
 services.AddAuthentication(options =>
@@ -162,7 +111,8 @@ services.AddAuthorization(options =>
 {
     options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
 });
-// Rate limiting global por IP (100 req/min)
+
+// Rate limiting
 services.AddRateLimiter(options =>
 {
     options.RejectionStatusCode = 429;
@@ -179,8 +129,11 @@ services.AddRateLimiter(options =>
     });
 });
 
-// Health Checks
-services.AddHealthChecks();
+services.AddEndpointsApiExplorer();
+services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "RouterManager API", Version = "v1" });
+});
 
 var app = builder.Build();
 
@@ -199,10 +152,10 @@ using (var scope = app.Services.CreateScope())
 app.UseSerilogRequestLogging();
 app.UseGlobalExceptionHandling();
 app.UseMiddleware<ApiAuditMiddleware>();
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection(); // mantenha comentado se rodando só HTTP no dev
 app.UseCors(MyAllowSpecificOrigins);
 
-// API Key nas rotas públicas
+// API Key middleware mantido para rotas públicas
 app.UseWhen(
     ctx => ctx.Request.Path.StartsWithSegments("/api/v1/credentials")
         || ctx.Request.Path.StartsWithSegments("/api/providers")

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RouterManagerApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+53d7be644ccf2937113d335ef02bdd04bab5624d")]
 [assembly: System.Reflection.AssemblyProductAttribute("RouterManagerApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RouterManagerApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

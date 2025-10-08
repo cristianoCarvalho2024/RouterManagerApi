@@ -1,0 +1,69 @@
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using RouterManager.Infrastructure.Persistence;
+
+namespace RouterManager.Api.Controllers;
+
+[ApiController]
+[Route("api/admin/routercredentials")]
+[Authorize(Roles = "Admin")]
+public class AdminRouterCredentialsController : ControllerBase
+{
+    private readonly RouterManagerDbContext _db;
+    public AdminRouterCredentialsController(RouterManagerDbContext db) => _db = db;
+
+    public sealed class CredentialRequest
+    {
+        public int RouterModelId { get; set; }
+        public string Username { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetAll([FromQuery] int? routerModelId, CancellationToken ct)
+    {
+        var query = _db.RouterCredentials.AsNoTracking().Include(c => c.RouterModel).ThenInclude(m => m.Provider).AsQueryable();
+        if (routerModelId.HasValue) query = query.Where(c => c.RouterModelId == routerModelId.Value);
+        var list = await query
+            .OrderBy(c => c.RouterModel.Provider.Name).ThenBy(c => c.RouterModel.Name).ThenBy(c => c.Username)
+            .Select(c => new
+            {
+                c.Id,
+                c.Username,
+                Password = _db.Unprotect(c.PasswordEncrypted),
+                c.RouterModelId,
+                Model = c.RouterModel.Name,
+                Provider = c.RouterModel.Provider.Name
+            })
+            .ToListAsync(ct);
+        return Ok(list);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create([FromBody] CredentialRequest req, CancellationToken ct)
+    {
+        if (req.RouterModelId <= 0) return BadRequest("RouterModelId requerido");
+        if (string.IsNullOrWhiteSpace(req.Username) || string.IsNullOrWhiteSpace(req.Password)) return BadRequest("Username e Password requeridos");
+        var model = await _db.RouterModels.FirstOrDefaultAsync(m => m.Id == req.RouterModelId, ct);
+        if (model == null) return BadRequest("Modelo inválido");
+        _db.RouterCredentials.Add(new RouterManager.Domain.Entities.RouterCredential
+        {
+            RouterModelId = req.RouterModelId,
+            Username = req.Username.Trim(),
+            PasswordEncrypted = _db.Protect(req.Password)
+        });
+        await _db.SaveChangesAsync(ct);
+        return CreatedAtAction(nameof(GetAll), new { req.RouterModelId }, new { ok = true });
+    }
+
+    [HttpDelete("{id:int}")]
+    public async Task<IActionResult> Delete(int id, CancellationToken ct)
+    {
+        var entity = await _db.RouterCredentials.FirstOrDefaultAsync(c => c.Id == id, ct);
+        if (entity == null) return NotFound();
+        _db.RouterCredentials.Remove(entity);
+        await _db.SaveChangesAsync(ct);
+        return NoContent();
+    }
+}
