@@ -18,6 +18,8 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
+using Microsoft.AspNetCore.Authentication;
+using RouterManager.Api.Security;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +28,7 @@ builder.Host.UseSerilog((ctx, lc) => lc.ReadFrom.Configuration(ctx.Configuration
 
 var services = builder.Services;
 var configuration = builder.Configuration;
+var env = builder.Environment;
 
 services
     .AddControllers()
@@ -36,7 +39,7 @@ services
         opts.JsonSerializerOptions.WriteIndented = false;
     });
 
-// CORS: inclui portas do AdminWeb
+// CORS
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 services.AddCors(options =>
 {
@@ -46,24 +49,39 @@ services.AddCors(options =>
                 "http://localhost",
                 "https://localhost",
                 "https://localhost:7070",
-                "http://localhost:5283",   // API HTTP dev
+                "http://localhost:5283",
                 "https://localhost:44386",
-                "http://localhost:5134",   // AdminWeb HTTP
-                "https://localhost:7183"    // AdminWeb HTTPS
+                "http://localhost:5134",
+                "https://localhost:7183"
             )
             .AllowAnyHeader()
             .AllowAnyMethod();
     });
 });
 
-// Evita 400 automáticos por ModelState
 services.Configure<ApiBehaviorOptions>(options =>
 {
     options.SuppressModelStateInvalidFilter = true;
 });
 
-// Health checks necessários para MapHealthChecks
 services.AddHealthChecks();
+
+// Rate Limiting (re-add)
+services.AddRateLimiter(options =>
+{
+    options.RejectionStatusCode = 429;
+    options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(ctx =>
+    {
+        var key = ctx.Connection.RemoteIpAddress?.ToString() ?? "unknown";
+        return RateLimitPartition.GetFixedWindowLimiter(key, _ => new FixedWindowRateLimiterOptions
+        {
+            PermitLimit = 100,
+            Window = TimeSpan.FromMinutes(1),
+            QueueLimit = 0,
+            QueueProcessingOrder = QueueProcessingOrder.OldestFirst
+        });
+    });
+});
 
 var conn = configuration.GetConnectionString("Default") ?? "Server=localhost;Database=RouterManagerDb;Trusted_Connection=True;TrustServerCertificate=True";
 services.AddDbContext<RouterManagerDbContext>(o => o.UseSqlServer(conn));
@@ -76,6 +94,7 @@ services.AddScoped<IUpdateRepository, UpdateRepository>();
 services.AddScoped<IUserRepository, UserRepository>();
 services.AddScoped<IProviderRepository, ProviderRepository>();
 services.AddScoped<ICredentialLookupRepository, CredentialLookupRepository>();
+services.AddScoped<ITokenStore, TokenStore>();
 
 services.AddScoped<ICredentialService, CredentialService>();
 services.AddScoped<ITelemetryService, TelemetryService>();
@@ -85,9 +104,13 @@ services.AddScoped<IProvidersService, ProvidersService>();
 services.AddScoped<IDatabaseSeeder, DatabaseSeeder>();
 services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-// JWT
-var jwtKey = configuration["Jwt:Key"] ?? "dev-secret-key-change";
+// JWT + DB token
+var jwtKey = configuration["Jwt:Key"];
 var jwtIssuer = configuration["Jwt:Issuer"] ?? "RouterManager";
+if (string.IsNullOrWhiteSpace(jwtKey) || Encoding.UTF8.GetByteCount(jwtKey) < 32)
+{
+    throw new InvalidOperationException("Jwt:Key não configurado ou com tamanho insuficiente (mínimo 32 bytes).");
+}
 var keyBytes = Encoding.UTF8.GetBytes(jwtKey);
 services.AddAuthentication(options =>
 {
@@ -105,28 +128,27 @@ services.AddAuthentication(options =>
         ValidIssuer = jwtIssuer,
         ClockSkew = TimeSpan.FromMinutes(2)
     };
-});
+})
+.AddScheme<AuthenticationSchemeOptions, DbTokenAuthenticationHandler>(DbTokenAuthenticationHandler.SchemeName, null);
 
 services.AddAuthorization(options =>
 {
     options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
-});
-
-// Rate limiting
-services.AddRateLimiter(options =>
-{
-    options.RejectionStatusCode = 429;
-    options.GlobalLimiter = PartitionedRateLimiter.Create<HttpContext, string>(ctx =>
-    {
-        var key = ctx.Connection.RemoteIpAddress?.ToString() ?? "unknown";
-        return RateLimitPartition.GetFixedWindowLimiter(key, _ => new FixedWindowRateLimiterOptions
-        {
-            PermitLimit = 100,
-            Window = TimeSpan.FromMinutes(1),
-            QueueProcessingOrder = QueueProcessingOrder.OldestFirst,
-            QueueLimit = 0
-        });
-    });
+    options.AddPolicy("DeviceBootstrap", policy => policy.RequireClaim("type", "bootstrap"));
+    options.AddPolicy("DeviceWithSerial", policy => policy.RequireClaim("serial"));
+    options.AddPolicy("DeviceBasic", policy => policy.RequireAssertion(ctx =>
+        ctx.User.HasClaim(c => c.Type == "serial") || ctx.User.HasClaim(c => c.Type == "type" && c.Value == "bootstrap")));
+    // Provisioning: generic/bootstrap/serial
+    options.AddPolicy("PublicProvisioning", policy => policy.RequireAssertion(ctx =>
+        ctx.User.HasClaim(c => c.Type == "serial") ||
+        ctx.User.HasClaim(c => c.Type == "type" && (c.Value == "bootstrap" || c.Value == "generic"))));
+    options.AddPolicy("PublicProviders", policy => policy.RequireAssertion(ctx =>
+        ctx.User.HasClaim(c => c.Type == "serial") ||
+        ctx.User.HasClaim(c => c.Type == "type" && (c.Value == "bootstrap" || c.Value == "generic")) ||
+        ctx.User.HasClaim(c => c.Type == "providerId") ||
+        ctx.User.IsInRole("Admin")));
+    options.AddPolicy("CanRegisterDevice", policy => policy.RequireAssertion(ctx =>
+        ctx.User.HasClaim(c => c.Type == "type" && (c.Value == "bootstrap" || c.Value == "generic"))));
 });
 
 services.AddEndpointsApiExplorer();
@@ -145,6 +167,9 @@ if (app.Environment.IsDevelopment())
 
 using (var scope = app.Services.CreateScope())
 {
+    var tokenStore = scope.ServiceProvider.GetRequiredService<ITokenStore>();
+    await tokenStore.EnsureSchemaAsync();
+
     var seeder = scope.ServiceProvider.GetRequiredService<IDatabaseSeeder>();
     await seeder.SeedAsync();
 }
@@ -152,18 +177,21 @@ using (var scope = app.Services.CreateScope())
 app.UseSerilogRequestLogging();
 app.UseGlobalExceptionHandling();
 app.UseMiddleware<ApiAuditMiddleware>();
-// app.UseHttpsRedirection(); // mantenha comentado se rodando só HTTP no dev
 app.UseCors(MyAllowSpecificOrigins);
 
-// API Key middleware mantido para rotas públicas
-app.UseWhen(
-    ctx => ctx.Request.Path.StartsWithSegments("/api/v1/credentials")
-        || ctx.Request.Path.StartsWithSegments("/api/providers")
-        || ctx.Request.Path.StartsWithSegments("/api/v1/providers"),
-    branch => { branch.UseMiddleware<RouterManager.Api.Middleware.ApiKeyMiddleware>(); }
-);
-
 app.UseRateLimiter();
+
+// Encadeia JWT, depois DB token
+app.Use(async (ctx, next) =>
+{
+    await ctx.RequestServices.GetRequiredService<IAuthenticationService>().AuthenticateAsync(ctx, JwtBearerDefaults.AuthenticationScheme);
+    if (!ctx.User.Identity?.IsAuthenticated ?? true)
+    {
+        await ctx.RequestServices.GetRequiredService<IAuthenticationService>().AuthenticateAsync(ctx, DbTokenAuthenticationHandler.SchemeName);
+    }
+    await next();
+});
+
 app.UseAuthentication();
 app.UseAuthorization();
 

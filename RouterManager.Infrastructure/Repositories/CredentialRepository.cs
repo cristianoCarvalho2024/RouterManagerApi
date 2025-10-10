@@ -19,6 +19,8 @@ public class CredentialRepository : ICredentialRepository
             .Include(rc => rc.RouterModel)
             .Where(rc => rc.RouterModel.ProviderId == providerId &&
                          (rc.RouterModel.Name == modelIdentifier || (hasEnum && rc.RouterModel.EnumIdentifier == parsedEnum)))
+            .OrderBy(rc => rc.SortOrder)
+            .ThenBy(rc => rc.Id)
             .Select(rc => new { rc.Username, Plain = _ctx.Unprotect(rc.PasswordEncrypted) })
             .ToListAsync(ct);
 

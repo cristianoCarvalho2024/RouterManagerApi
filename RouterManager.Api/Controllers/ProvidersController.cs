@@ -7,7 +7,7 @@ namespace RouterManager.Api.Controllers;
 [ApiController]
 [Route("api/providers")]
 [Route("api/v1/providers")] // alias v1
-[AllowAnonymous] // protegido por API Key via middleware; não exige JWT
+[Authorize(Policy = "PublicProviders")] // generic, bootstrap, serial, provider, admin
 public class ProvidersController : ControllerBase
 {
     private readonly IProvidersService _service;
@@ -20,7 +20,6 @@ public class ProvidersController : ControllerBase
         return Ok(list.Select(p => new { p.Id, p.Name }));
     }
 
-    // Busca provider por nome (case-insensitive): facilita o app evitar roundtrip completo
     [HttpGet("by-name")]
     public async Task<IActionResult> GetByName([FromQuery] string name, CancellationToken ct)
     {
@@ -29,12 +28,5 @@ public class ProvidersController : ControllerBase
         var match = list.FirstOrDefault(p => string.Equals(p.Name, name, StringComparison.OrdinalIgnoreCase));
         if (match == null) return NotFound();
         return Ok(new { match.Id, match.Name });
-    }
-
-    [HttpGet("{id}/credentials")]
-    public async Task<IActionResult> GetCredentials(int id, [FromQuery] string model, CancellationToken ct)
-    {
-        var creds = await _service.GetCredentialsAsync(id, model, ct);
-        return Ok(creds.Select(c => new { c.Username, c.Password }));
     }
 }

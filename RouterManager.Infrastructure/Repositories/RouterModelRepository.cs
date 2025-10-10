@@ -10,6 +10,20 @@ public class RouterModelRepository : IRouterModelRepository
     private readonly RouterManagerDbContext _ctx;
     public RouterModelRepository(RouterManagerDbContext ctx) => _ctx = ctx;
 
-    public Task<RouterModel?> GetAsync(int providerId, string modelIdentifier, CancellationToken ct = default)
-        => _ctx.RouterModels.FirstOrDefaultAsync(m => m.ProviderId == providerId && m.EnumIdentifier.ToString() == modelIdentifier, ct);
+    public async Task<RouterModel?> GetAsync(int providerId, string modelIdentifier, CancellationToken ct = default)
+    {
+        // Tenta interpretar como enum; se não der, compara pelo Name
+        if (Enum.TryParse<RouterModelIdentifier>(modelIdentifier, out var parsed))
+        {
+            return await _ctx.RouterModels.FirstOrDefaultAsync(
+                m => m.ProviderId == providerId && m.EnumIdentifier == parsed,
+                ct);
+        }
+        else
+        {
+            return await _ctx.RouterModels.FirstOrDefaultAsync(
+                m => m.ProviderId == providerId && m.Name == modelIdentifier,
+                ct);
+        }
+    }
 }

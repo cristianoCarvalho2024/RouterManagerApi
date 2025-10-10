@@ -11,16 +11,23 @@ public class AuthController : ControllerBase
 {
     private readonly IAuthService _auth;
     private readonly ILogger<AuthController> _logger;
-    public AuthController(IAuthService auth, ILogger<AuthController> logger)
+    private readonly IWebHostEnvironment _env;
+    public AuthController(IAuthService auth, ILogger<AuthController> logger, IWebHostEnvironment env)
     {
         _auth = auth;
         _logger = logger;
+        _env = env;
     }
 
     [HttpPost("register")]
     [AllowAnonymous]
     public async Task<IActionResult> Register([FromBody] RegisterRequest request, CancellationToken ct)
     {
+        if (!_env.IsDevelopment())
+        {
+            return NotFound(); // desabilitado fora de Development
+        }
+
         var ip = HttpContext.Connection.RemoteIpAddress?.ToString();
         _logger.LogInformation("Auth REGISTER attempt: user={User} passLen={Len} ip={Ip}", request?.Username, request?.Password?.Length ?? 0, ip);
 

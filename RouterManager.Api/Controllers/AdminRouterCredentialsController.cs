@@ -18,6 +18,7 @@ public class AdminRouterCredentialsController : ControllerBase
         public int RouterModelId { get; set; }
         public string Username { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
+        public int SortOrder { get; set; } = 0;
     }
 
     public sealed class UpdateCredentialRequest
@@ -25,6 +26,14 @@ public class AdminRouterCredentialsController : ControllerBase
         public string? Username { get; set; }
         public string? Password { get; set; }
         public int? RouterModelId { get; set; }
+        public int? SortOrder { get; set; }
+    }
+
+    public sealed class ReorderRequest
+    {
+        public int RouterModelId { get; set; }
+        public List<Item> Items { get; set; } = new();
+        public sealed class Item { public int Id { get; set; } public int SortOrder { get; set; } }
     }
 
     // GET: /api/admin/routercredentials
@@ -34,18 +43,41 @@ public class AdminRouterCredentialsController : ControllerBase
     {
         var query = _db.RouterCredentials.AsNoTracking().Include(c => c.RouterModel).ThenInclude(m => m.Provider).AsQueryable();
         if (routerModelId.HasValue) query = query.Where(c => c.RouterModelId == routerModelId.Value);
-        var list = await query
-            .OrderBy(c => c.RouterModel.Provider.Name).ThenBy(c => c.RouterModel.Name).ThenBy(c => c.Username)
+
+        // Materializa primeiro, depois descriptografa em memória com fallback
+        var raw = await query
+            .OrderBy(c => c.RouterModel.Provider.Name)
+            .ThenBy(c => c.RouterModel.Name)
+            .ThenBy(c => c.SortOrder)
+            .ThenBy(c => c.Id)
             .Select(c => new
             {
                 c.Id,
                 c.Username,
-                Password = _db.Unprotect(c.PasswordEncrypted),
+                c.PasswordEncrypted,
                 c.RouterModelId,
                 Model = c.RouterModel.Name,
-                Provider = c.RouterModel.Provider.Name
+                Provider = c.RouterModel.Provider.Name,
+                c.SortOrder
             })
             .ToListAsync(ct);
+
+        string SafeUnprotect(string enc)
+        {
+            try { return _db.Unprotect(enc); } catch { return string.Empty; }
+        }
+
+        var list = raw.Select(c => new
+        {
+            c.Id,
+            c.Username,
+            Password = SafeUnprotect(c.PasswordEncrypted),
+            c.RouterModelId,
+            c.Model,
+            c.Provider,
+            c.SortOrder
+        }).ToList();
+
         return Ok(list);
     }
 
@@ -57,7 +89,9 @@ public class AdminRouterCredentialsController : ControllerBase
     {
         var e = await _db.RouterCredentials.AsNoTracking().Include(c => c.RouterModel).ThenInclude(m => m.Provider).FirstOrDefaultAsync(c => c.Id == id, ct);
         if (e == null) return NotFound();
-        return Ok(new { e.Id, e.Username, Password = _db.Unprotect(e.PasswordEncrypted), e.RouterModelId, Model = e.RouterModel.Name, Provider = e.RouterModel.Provider.Name });
+        string password;
+        try { password = _db.Unprotect(e.PasswordEncrypted); } catch { password = string.Empty; }
+        return Ok(new { e.Id, e.Username, Password = password, e.RouterModelId, Model = e.RouterModel.Name, Provider = e.RouterModel.Provider.Name, e.SortOrder });
     }
 
     // POST: /api/admin/routercredentials
@@ -74,7 +108,8 @@ public class AdminRouterCredentialsController : ControllerBase
         {
             RouterModelId = req.RouterModelId,
             Username = req.Username.Trim(),
-            PasswordEncrypted = _db.Protect(req.Password)
+            PasswordEncrypted = _db.Protect(req.Password),
+            SortOrder = req.SortOrder
         };
         _db.RouterCredentials.Add(entity);
         await _db.SaveChangesAsync(ct);
@@ -92,6 +127,25 @@ public class AdminRouterCredentialsController : ControllerBase
         if (!string.IsNullOrWhiteSpace(req.Username)) entity.Username = req.Username.Trim();
         if (!string.IsNullOrWhiteSpace(req.Password)) entity.PasswordEncrypted = _db.Protect(req.Password);
         if (req.RouterModelId.GetValueOrDefault() > 0) entity.RouterModelId = req.RouterModelId!.Value;
+        if (req.SortOrder.HasValue) entity.SortOrder = req.SortOrder.Value;
+        await _db.SaveChangesAsync(ct);
+        return NoContent();
+    }
+
+    // PUT: /api/admin/routercredentials/reorder
+    [HttpPut("reorder")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Reorder([FromBody] ReorderRequest req, CancellationToken ct)
+    {
+        if (req.RouterModelId <= 0) return BadRequest("RouterModelId requerido");
+        var ids = req.Items.Select(i => i.Id).ToHashSet();
+        var creds = await _db.RouterCredentials.Where(c => c.RouterModelId == req.RouterModelId && ids.Contains(c.Id)).ToListAsync(ct);
+        foreach (var c in creds)
+        {
+            var item = req.Items.FirstOrDefault(i => i.Id == c.Id);
+            if (item != null) c.SortOrder = item.SortOrder;
+        }
         await _db.SaveChangesAsync(ct);
         return NoContent();
     }

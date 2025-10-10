@@ -18,11 +18,13 @@ public class AuthService : IAuthService
 {
     private readonly IUserRepository _users;
     private readonly IConfiguration _config;
+    private readonly ITokenStore _tokenStore;
 
-    public AuthService(IUserRepository users, IConfiguration config)
+    public AuthService(IUserRepository users, IConfiguration config, ITokenStore tokenStore)
     {
         _users = users;
         _config = config;
+        _tokenStore = tokenStore;
     }
 
     public async Task<string?> RegisterAsync(string username, string password, CancellationToken ct = default)
@@ -31,7 +33,9 @@ public class AuthService : IAuthService
         if (existing != null) return null;
         var user = new User { Username = username, PasswordHash = BCrypt.Net.BCrypt.HashPassword(password) };
         await _users.AddAsync(user, ct);
-        return GenerateJwt(user);
+        var token = GenerateJwt(user, out var expiresAt);
+        await _tokenStore.UpsertUserTokenAsync(user.Id, token, expiresAt, ct);
+        return token;
     }
 
     public async Task<string?> LoginAsync(string username, string password, CancellationToken ct = default)
@@ -39,10 +43,12 @@ public class AuthService : IAuthService
         var user = await _users.GetByUsernameAsync(username, ct);
         if (user == null) return null;
         if (!BCrypt.Net.BCrypt.Verify(password, user.PasswordHash)) return null;
-        return GenerateJwt(user);
+        var token = GenerateJwt(user, out var expiresAt);
+        await _tokenStore.UpsertUserTokenAsync(user.Id, token, expiresAt, ct);
+        return token;
     }
 
-    private string GenerateJwt(User user)
+    private string GenerateJwt(User user, out DateTimeOffset expiresAt)
     {
         var key = _config["Jwt:Key"] ?? "dev-secret-key-change";
         var issuer = _config["Jwt:Issuer"] ?? "RouterManager";
@@ -53,7 +59,8 @@ public class AuthService : IAuthService
             new Claim(ClaimTypes.Name, user.Username),
             new Claim(ClaimTypes.Role, user.Role)
         };
-        var token = new JwtSecurityToken(issuer, null, claims, expires: DateTime.UtcNow.AddHours(4), signingCredentials: creds);
+        expiresAt = DateTimeOffset.UtcNow.AddHours(4);
+        var token = new JwtSecurityToken(issuer, null, claims, expires: expiresAt.UtcDateTime, signingCredentials: creds);
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
 }

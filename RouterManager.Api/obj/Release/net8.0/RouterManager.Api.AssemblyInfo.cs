@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("e0dcc26b-cb77-494e-8a78-4d528b641071")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("RouterManager.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+129d9018d16795bca20063caef47321aea4d4489")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bd126c4a9320d19495ccb179b734740213583a97")]
 [assembly: System.Reflection.AssemblyProductAttribute("RouterManager.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RouterManager.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
