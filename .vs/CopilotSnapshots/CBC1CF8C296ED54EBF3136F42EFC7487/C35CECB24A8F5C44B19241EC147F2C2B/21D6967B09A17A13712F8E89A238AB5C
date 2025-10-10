@@ -1,0 +1,8 @@
+﻿using System.Text.Json.Serialization;
+
+namespace RouterManager.Shared.Dtos.Responses;
+
+public class UpdatePackageResponse
+{
+    [JsonPropertyName("requestPayload")] public string RequestPayload { get; set; } = string.Empty;
+}

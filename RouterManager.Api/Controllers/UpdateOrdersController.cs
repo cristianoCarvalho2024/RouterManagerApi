@@ -3,79 +3,131 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RouterManager.Infrastructure.Persistence;
 using RouterManager.Domain.Entities;
-using RouterManager.Api.Models;
 using System.Text.Json;
+using RouterManager.Api.Models.UpdateOrders;
 
 namespace RouterManager.Api.Controllers;
 
 [ApiController]
-[Route("api/v1/update-orders")]
-[Authorize] // não exige mais role Admin; apenas Bearer válido
+[Route("api/v1/update-orders")] // Rota correta
+[Authorize]
 public class UpdateOrdersController : ControllerBase
 {
     private readonly RouterManagerDbContext _db;
+
     public UpdateOrdersController(RouterManagerDbContext db) => _db = db;
 
-    /// <summary>
-    /// Cria uma nova ordem de atualização remota (RemoteAction).
-    /// </summary>
-    /// <remarks>
-    /// Envie requestPayload como OBJETO JSON (não string). Suporta SerialNumber opcional para direcionar um dispositivo específico.
-    /// </remarks>
+    // GET: /api/v1/update-orders
+    [HttpGet]
+    public async Task<IActionResult> GetAll(CancellationToken ct)
+    {
+        var orders = await _db.UpdatePackages
+            .AsNoTracking()
+            .OrderByDescending(o => o.CreatedAt)
+            .Select(o => new { o.Id, o.Name, o.CreatedAt })
+            .ToListAsync(ct);
+        return Ok(orders);
+    }
+
+    // GET: /api/v1/update-orders/{id}
+    [HttpGet("{id:int}")]
+    [ProducesResponseType(typeof(UpdateOrderDetailDto), 200)]
+    [ProducesResponseType(404)]
+    public async Task<IActionResult> GetById(int id, CancellationToken ct)
+    {
+        var o = await _db.UpdatePackages
+            .AsNoTracking()
+            .FirstOrDefaultAsync(x => x.Id == id, ct);
+
+        if (o == null) return NotFound();
+
+        var dto = new UpdateOrderDetailDto(
+            o.Id,
+            o.Name,
+            o.ProviderId,
+            o.ModelIdentifier,
+            o.FirmwareVersion,
+            o.SerialNumber,
+            o.RequestPayload,
+            o.CreatedAt
+        );
+        return Ok(dto);
+    }
+
+    // POST: /api/v1/update-orders
     [HttpPost]
     [ProducesResponseType(typeof(object), 201)]
     [ProducesResponseType(400)]
     public async Task<IActionResult> Create([FromBody] CreateUpdateOrderRequest req, CancellationToken ct)
     {
-        if (req.RequestPayload == null || string.IsNullOrWhiteSpace(req.RequestPayload.ActionType))
-            return BadRequest("RequestPayload.ActionType requerido");
-
-        switch (req.RequestPayload.ActionType)
-        {
-            case RemoteActionTypes.HttpDownload:
-            {
-                var http = req.RequestPayload.Payload.Deserialize<HttpDownloadPayload>();
-                if (http == null || string.IsNullOrWhiteSpace(http.Url))
-                    return BadRequest("Payload.HttpDownload.Url requerido");
-                break;
-            }
-            case RemoteActionTypes.RouterCommand:
-            {
-                var cmd = req.RequestPayload.Payload.Deserialize<RouterCommandPayload>();
-                if (cmd == null || string.IsNullOrWhiteSpace(cmd.Command) || string.IsNullOrWhiteSpace(cmd.TargetService))
-                    return BadRequest("Payload.RouterCommand.Command e TargetService requeridos");
-                break;
-            }
-            default:
-                return BadRequest("ActionType não suportado");
-        }
-
-        var payloadJson = JsonSerializer.Serialize(req.RequestPayload);
+        if (string.IsNullOrWhiteSpace(req.Name))
+            return BadRequest("O nome da ordem é obrigatório.");
+        if (req.ProviderId <= 0)
+            return BadRequest("ProviderId inválido.");
+        if (string.IsNullOrWhiteSpace(req.ModelIdentifier))
+            return BadRequest("ModelIdentifier é obrigatório.");
 
         var entity = new UpdatePackage
         {
+            Name = req.Name.Trim(),
             ProviderId = req.ProviderId,
-            ModelIdentifier = req.ModelIdentifier,
-            SerialNumber = req.SerialNumber,
-            FirmwareVersion = req.FirmwareVersion,
-            RequestPayload = payloadJson,
+            ModelIdentifier = req.ModelIdentifier.Trim(),
+            FirmwareVersion = string.IsNullOrWhiteSpace(req.FirmwareVersion) ? null : req.FirmwareVersion.Trim(),
+            SerialNumber = string.IsNullOrWhiteSpace(req.SerialNumber) ? null : req.SerialNumber.Trim(),
+            RequestPayload = JsonSerializer.Serialize(req.Actions),
             CreatedAt = DateTime.UtcNow
         };
+
         _db.UpdatePackages.Add(entity);
         await _db.SaveChangesAsync(ct);
+
         return CreatedAtAction(nameof(GetById), new { id = entity.Id }, new { entity.Id });
     }
 
-    /// <summary>
-    /// Retorna a ordem cadastrada.
-    /// </summary>
-    [HttpGet("{id:int}")]
-    [ProducesResponseType(200)]
+    // PUT: /api/v1/update-orders/{id}
+    [HttpPut("{id:int}")]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(400)]
     [ProducesResponseType(404)]
-    public async Task<IActionResult> GetById(int id, CancellationToken ct)
+    public async Task<IActionResult> Update(int id, [FromBody] UpdateUpdateOrderRequest req, CancellationToken ct)
     {
-        var e = await _db.UpdatePackages.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id, ct);
-        if (e == null) return NotFound();
-        return Ok(new { e.Id, e.ProviderId, e.ModelIdentifier, e.SerialNumber, e.FirmwareVersion, e.RequestPayload, e.CreatedAt });
+        if (id != req.Id)
+            return BadRequest("O ID da rota não corresponde ao ID do corpo da requisição.");
+        if (string.IsNullOrWhiteSpace(req.Name))
+            return BadRequest("O nome da ordem é obrigatório.");
+        if (req.ProviderId <= 0)
+            return BadRequest("ProviderId inválido.");
+        if (string.IsNullOrWhiteSpace(req.ModelIdentifier))
+            return BadRequest("ModelIdentifier é obrigatório.");
+
+        var entity = await _db.UpdatePackages.FirstOrDefaultAsync(o => o.Id == id, ct);
+        if (entity == null)
+            return NotFound();
+
+        entity.Name = req.Name.Trim();
+        entity.ProviderId = req.ProviderId;
+        entity.ModelIdentifier = req.ModelIdentifier.Trim();
+        entity.FirmwareVersion = string.IsNullOrWhiteSpace(req.FirmwareVersion) ? null : req.FirmwareVersion.Trim();
+        entity.SerialNumber = string.IsNullOrWhiteSpace(req.SerialNumber) ? null : req.SerialNumber.Trim();
+        entity.RequestPayload = JsonSerializer.Serialize(req.Actions);
+
+        await _db.SaveChangesAsync(ct);
+        return NoContent();
+    }
+
+    // DELETE: /api/v1/update-orders/{id}
+    [HttpDelete("{id:int}")]
+    [ProducesResponseType(204)]
+    [ProducesResponseType(404)]
+    public async Task<IActionResult> Delete(int id, CancellationToken ct)
+    {
+        var entity = await _db.UpdatePackages.FirstOrDefaultAsync(o => o.Id == id, ct);
+        if (entity == null)
+            return NotFound();
+
+        _db.UpdatePackages.Remove(entity);
+        await _db.SaveChangesAsync(ct);
+
+        return NoContent();
     }
 }

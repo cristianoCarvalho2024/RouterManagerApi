@@ -1,0 +1,12 @@
+﻿namespace RouterManager.Domain.Entities;
+
+public class UpdateAction
+{
+    public int Id { get; set; }
+    public int UpdatePackageId { get; set; }
+    public UpdatePackage UpdatePackage { get; set; } = null!;
+    public int Order { get; set; }
+    public string Service { get; set; } = string.Empty;
+    public string Method { get; set; } = string.Empty;
+    public string? ParamsJson { get; set; }
+}

@@ -1,0 +1,23 @@
+﻿using Microsoft.EntityFrameworkCore;
+using RouterManager.Application.Interfaces;
+using RouterManager.Domain.Entities;
+using RouterManager.Infrastructure.Persistence;
+
+namespace RouterManager.Infrastructure.Repositories;
+
+public class CredentialRepository : ICredentialRepository
+{
+    private readonly RouterManagerDbContext _ctx;
+    public CredentialRepository(RouterManagerDbContext ctx) => _ctx = ctx;
+
+    public async Task<IEnumerable<(string Username, string PasswordPlain)>> GetPlainByProviderAndModelAsync(int providerId, string modelIdentifier, CancellationToken ct = default)
+    {
+        var query = _ctx.RouterCredentials
+            .Include(rc => rc.RouterModel)
+            .Where(rc => rc.RouterModel.ProviderId == providerId && rc.RouterModel.EnumIdentifier.ToString() == modelIdentifier)
+            .Select(rc => new { rc.Username, Plain = _ctx.Unprotect(rc.PasswordEncrypted) });
+
+        var list = await query.ToListAsync(ct);
+        return list.Select(x => (x.Username, x.Plain));
+    }
+}

@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using RouterManager.Infrastructure.Persistence;
-using RouterManager.Domain.Entities;
 
 namespace RouterManager.Api.Controllers;
 
@@ -14,39 +13,53 @@ public class AdminProvidersController : ControllerBase
     private readonly RouterManagerDbContext _db;
     public AdminProvidersController(RouterManagerDbContext db) => _db = db;
 
-    public record ProviderRequest(string Name);
+    public record CreateProviderRequest(string Name);
+    public record UpdateProviderRequest(string Name);
 
-    // Lista todas as provedoras
+    // GET: /api/admin/providers
     [HttpGet]
-    [ProducesResponseType(200)]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAll(CancellationToken ct)
     {
         var list = await _db.Providers.AsNoTracking().OrderBy(p => p.Name).Select(p => new { p.Id, p.Name }).ToListAsync(ct);
         return Ok(list);
     }
 
+    // GET: /api/admin/providers/{id}
+    [HttpGet("{id:int}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetById(int id, CancellationToken ct)
+    {
+        var e = await _db.Providers.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id, ct);
+        if (e == null) return NotFound();
+        return Ok(new { e.Id, e.Name });
+    }
+
+    // POST: /api/admin/providers
     [HttpPost]
-    [ProducesResponseType(typeof(object), 201)]
-    [ProducesResponseType(400)]
-    [ProducesResponseType(409)]
-    public async Task<IActionResult> Create([FromBody] ProviderRequest req, CancellationToken ct)
+    [ProducesResponseType(typeof(object), StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    public async Task<IActionResult> Create([FromBody] CreateProviderRequest req, CancellationToken ct)
     {
         if (string.IsNullOrWhiteSpace(req.Name)) return BadRequest("Name requerido");
         var exists = await _db.Providers.AnyAsync(p => p.Name == req.Name, ct);
         if (exists) return Conflict("Já existe uma provedora com esse nome.");
 
-        var entity = new Provider { Name = req.Name.Trim() };
+        var entity = new RouterManager.Domain.Entities.Provider { Name = req.Name.Trim() };
         _db.Providers.Add(entity);
         await _db.SaveChangesAsync(ct);
         return CreatedAtAction(nameof(GetById), new { id = entity.Id }, new { entity.Id, entity.Name });
     }
 
+    // PUT: /api/admin/providers/{id}
     [HttpPut("{id:int}")]
-    [ProducesResponseType(204)]
-    [ProducesResponseType(400)]
-    [ProducesResponseType(404)]
-    [ProducesResponseType(409)]
-    public async Task<IActionResult> Update(int id, [FromBody] ProviderRequest req, CancellationToken ct)
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    public async Task<IActionResult> Update(int id, [FromBody] UpdateProviderRequest req, CancellationToken ct)
     {
         if (string.IsNullOrWhiteSpace(req.Name)) return BadRequest("Name requerido");
         var entity = await _db.Providers.FirstOrDefaultAsync(p => p.Id == id, ct);
@@ -58,28 +71,19 @@ public class AdminProvidersController : ControllerBase
         return NoContent();
     }
 
+    // DELETE: /api/admin/providers/{id}
     [HttpDelete("{id:int}")]
-    [ProducesResponseType(204)]
-    [ProducesResponseType(404)]
-    [ProducesResponseType(409)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
     public async Task<IActionResult> Delete(int id, CancellationToken ct)
     {
         var entity = await _db.Providers.FirstOrDefaultAsync(p => p.Id == id, ct);
         if (entity == null) return NotFound();
         var inUse = await _db.RouterModels.AnyAsync(m => m.ProviderId == id, ct);
-        if (inUse) return Conflict("Provedora em uso por modelos. Remova/atualize os modelos antes de apagar.");
+        if (inUse) return Conflict("Provedora em uso por modelos. Considere deletar modelos associados (exclusão em cascata) ou adotar soft delete.");
         _db.Providers.Remove(entity);
         await _db.SaveChangesAsync(ct);
         return NoContent();
-    }
-
-    [HttpGet("{id:int}")]
-    [ProducesResponseType(200)]
-    [ProducesResponseType(404)]
-    public async Task<IActionResult> GetById(int id, CancellationToken ct)
-    {
-        var e = await _db.Providers.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id, ct);
-        if (e == null) return NotFound();
-        return Ok(new { e.Id, e.Name });
     }
 }

@@ -1,0 +1,140 @@
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using RouterManager.Infrastructure.Persistence;
+using System.Text.Json;
+
+namespace RouterManager.Api.Controllers;
+
+[ApiController]
+[Route("api/v1/updateorders")]
+[Authorize]
+public class UpdateOrdersController : ControllerBase
+{
+    private readonly RouterManagerDbContext _db;
+    public UpdateOrdersController(RouterManagerDbContext db) => _db = db;
+
+    public sealed record UpdateActionDto(string ActionType, string Payload);
+
+    public sealed class CreateUpdateOrderRequest
+    {
+        public string Name { get; set; } = string.Empty;
+        public List<UpdateActionDto> Actions { get; set; } = new();
+    }
+
+    public sealed class UpdateUpdateOrderRequest
+    {
+        public int Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public List<UpdateActionDto> Actions { get; set; } = new();
+    }
+
+    // GET: /api/v1/updateorders
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetAll(CancellationToken ct)
+    {
+        var list = await _db.UpdatePackages.AsNoTracking()
+            .OrderBy(u => u.Name)
+            .Select(u => new { u.Id, u.Name })
+            .ToListAsync(ct);
+        return Ok(list);
+    }
+
+    // GET: /api/v1/updateorders/{id}
+    [HttpGet("{id:int}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetById(int id, CancellationToken ct)
+    {
+        var entity = await _db.UpdatePackages.AsNoTracking()
+            .Include(u => u.Actions.OrderBy(a => a.Order))
+            .FirstOrDefaultAsync(x => x.Id == id, ct);
+        if (entity == null) return NotFound();
+        var result = new
+        {
+            entity.Id,
+            entity.Name,
+            Actions = entity.Actions
+                .OrderBy(a => a.Order)
+                .Select(a => new { a.Id, a.Order, a.Service, a.Method, a.ParamsJson })
+                .ToList()
+        };
+        return Ok(result);
+    }
+
+    // POST: /api/v1/updateorders
+    [HttpPost]
+    [ProducesResponseType(typeof(object), StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Create([FromBody] CreateUpdateOrderRequest req, CancellationToken ct)
+    {
+        if (string.IsNullOrWhiteSpace(req.Name)) return BadRequest("Name requerido");
+        if (req.Actions == null || req.Actions.Count == 0) return BadRequest("Ao menos uma ação é requerida");
+
+        var entity = new RouterManager.Domain.Entities.UpdatePackage
+        {
+            Name = req.Name.Trim(),
+            CreatedAt = DateTime.UtcNow,
+            Actions = req.Actions.Select((a, idx) => new RouterManager.Domain.Entities.UpdateAction
+            {
+                Order = idx,
+                Service = a.ActionType.Trim(),
+                Method = "Execute",
+                ParamsJson = a.Payload
+            }).ToList()
+        };
+        _db.UpdatePackages.Add(entity);
+        await _db.SaveChangesAsync(ct);
+        return CreatedAtAction(nameof(GetById), new { id = entity.Id }, new { entity.Id, entity.Name });
+    }
+
+    // PUT: /api/v1/updateorders/{id}
+    [HttpPut("{id:int}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Update(int id, [FromBody] UpdateUpdateOrderRequest req, CancellationToken ct)
+    {
+        if (id != req.Id) return BadRequest("Id incompatível");
+        if (string.IsNullOrWhiteSpace(req.Name)) return BadRequest("Name requerido");
+        if (req.Actions == null) return BadRequest("Actions requerido");
+
+        var entity = await _db.UpdatePackages.Include(u => u.Actions).FirstOrDefaultAsync(x => x.Id == id, ct);
+        if (entity == null) return NotFound();
+
+        entity.Name = req.Name.Trim();
+
+        // Substitui completamente as ações
+        _db.UpdateActions.RemoveRange(entity.Actions);
+        entity.Actions.Clear();
+        foreach (var (action, idx) in req.Actions.Select((a, i) => (a, i)))
+        {
+            entity.Actions.Add(new RouterManager.Domain.Entities.UpdateAction
+            {
+                Order = idx,
+                Service = action.ActionType.Trim(),
+                Method = "Execute",
+                ParamsJson = action.Payload,
+                UpdatePackageId = entity.Id
+            });
+        }
+
+        await _db.SaveChangesAsync(ct);
+        return NoContent();
+    }
+
+    // DELETE: /api/v1/updateorders/{id}
+    [HttpDelete("{id:int}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Delete(int id, CancellationToken ct)
+    {
+        var entity = await _db.UpdatePackages.Include(u => u.Actions).FirstOrDefaultAsync(x => x.Id == id, ct);
+        if (entity == null) return NotFound();
+        _db.UpdateActions.RemoveRange(entity.Actions);
+        _db.UpdatePackages.Remove(entity);
+        await _db.SaveChangesAsync(ct);
+        return NoContent();
+    }
+}

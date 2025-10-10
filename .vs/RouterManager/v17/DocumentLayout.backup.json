@@ -1,122 +1,200 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\",
+  "WorkspaceRootPath": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B30470E-4805-4DAF-8A91-B2741308A945}|RouterManager.Infrastructure\\RouterManager.Infrastructure.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.infrastructure\\migrations\\20251006091355_addserialnumbertoupdatepackages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6B30470E-4805-4DAF-8A91-B2741308A945}|RouterManager.Infrastructure\\RouterManager.Infrastructure.csproj|solutionrelative:routermanager.infrastructure\\migrations\\20251006091355_addserialnumbertoupdatepackages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.shared\\routermanager.shared.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|solutionrelative:routermanager.shared\\routermanager.shared.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.api\\validators\\authvalidators.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\validators\\authvalidators.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\.vs\\CopilotSnapshots\\2F6DA054CAD11747A0E2F9A58425D8AD\\5DC3FFC08AE5814D96B3D88F66E2BCC2\\0A6C6CC5CB763739A3F79AB8CD8BEAE9||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.vs\\CopilotSnapshots\\2F6DA054CAD11747A0E2F9A58425D8AD\\5DC3FFC08AE5814D96B3D88F66E2BCC2\\0A6C6CC5CB763739A3F79AB8CD8BEAE9||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.shared\\dtos\\responses\\credentialsresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|solutionrelative:routermanager.shared\\dtos\\responses\\credentialsresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.shared\\dtos\\requests\\reportstatusrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|solutionrelative:routermanager.shared\\dtos\\requests\\reportstatusrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.shared\\dtos\\requests\\checkforupdaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|solutionrelative:routermanager.shared\\dtos\\requests\\checkforupdaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.shared\\dtos\\responses\\updatepackageresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|solutionrelative:routermanager.shared\\dtos\\responses\\updatepackageresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C039DF0-48CA-469C-86B1-A1A77F1E92E6}|RouterManager.Application\\RouterManager.Application.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.application\\interfaces\\services.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C039DF0-48CA-469C-86B1-A1A77F1E92E6}|RouterManager.Application\\RouterManager.Application.csproj|solutionrelative:routermanager.application\\interfaces\\services.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.shared\\dtos\\auth\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|solutionrelative:routermanager.shared\\dtos\\auth\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.shared\\dtos\\auth\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|solutionrelative:routermanager.shared\\dtos\\auth\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.shared\\dtos\\auth\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|solutionrelative:routermanager.shared\\dtos\\auth\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C039DF0-48CA-469C-86B1-A1A77F1E92E6}|RouterManager.Application\\RouterManager.Application.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.application\\services\\credentialservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C039DF0-48CA-469C-86B1-A1A77F1E92E6}|RouterManager.Application\\RouterManager.Application.csproj|solutionrelative:routermanager.application\\services\\credentialservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C039DF0-48CA-469C-86B1-A1A77F1E92E6}|RouterManager.Application\\RouterManager.Application.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.application\\services\\telemetryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C039DF0-48CA-469C-86B1-A1A77F1E92E6}|RouterManager.Application\\RouterManager.Application.csproj|solutionrelative:routermanager.application\\services\\telemetryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6C039DF0-48CA-469C-86B1-A1A77F1E92E6}|RouterManager.Application\\RouterManager.Application.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.application\\services\\updateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{6C039DF0-48CA-469C-86B1-A1A77F1E92E6}|RouterManager.Application\\RouterManager.Application.csproj|solutionrelative:routermanager.application\\services\\updateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{6B30470E-4805-4DAF-8A91-B2741308A945}|RouterManager.Infrastructure\\RouterManager.Infrastructure.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.infrastructure\\seed\\databaseseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6B30470E-4805-4DAF-8A91-B2741308A945}|RouterManager.Infrastructure\\RouterManager.Infrastructure.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.infrastructure\\seed\\databaseseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6B30470E-4805-4DAF-8A91-B2741308A945}|RouterManager.Infrastructure\\RouterManager.Infrastructure.csproj|solutionrelative:routermanager.infrastructure\\seed\\databaseseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6B30470E-4805-4DAF-8A91-B2741308A945}|RouterManager.Infrastructure\\RouterManager.Infrastructure.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.infrastructure\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.api\\middleware\\exceptionhandlingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\middleware\\exceptionhandlingmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C039DF0-48CA-469C-86B1-A1A77F1E92E6}|RouterManager.Application\\RouterManager.Application.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.application\\services\\telemetryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C039DF0-48CA-469C-86B1-A1A77F1E92E6}|RouterManager.Application\\RouterManager.Application.csproj|solutionrelative:routermanager.application\\services\\telemetryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C039DF0-48CA-469C-86B1-A1A77F1E92E6}|RouterManager.Application\\RouterManager.Application.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.application\\interfaces\\services.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C039DF0-48CA-469C-86B1-A1A77F1E92E6}|RouterManager.Application\\RouterManager.Application.csproj|solutionrelative:routermanager.application\\interfaces\\services.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.shared\\dtos\\requests\\checkforupdaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|solutionrelative:routermanager.shared\\dtos\\requests\\checkforupdaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.shared\\dtos\\requests\\reportstatusrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|solutionrelative:routermanager.shared\\dtos\\requests\\reportstatusrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.api\\controllers\\updateorderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\controllers\\updateorderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.api\\routermanager.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\routermanager.api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B30470E-4805-4DAF-8A91-B2741308A945}|RouterManager.Infrastructure\\RouterManager.Infrastructure.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.infrastructure\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6B30470E-4805-4DAF-8A91-B2741308A945}|RouterManager.Infrastructure\\RouterManager.Infrastructure.csproj|solutionrelative:routermanager.infrastructure\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4BCC43FF-850D-4DDC-B6C5-B29D70B4F609}|RouterManager.Domain\\RouterManager.Domain.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.domain\\entities\\routerprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.shared\\routermanager.shared.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|solutionrelative:routermanager.shared\\routermanager.shared.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.api\\validators\\authvalidators.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\validators\\authvalidators.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\.vs\\CopilotSnapshots\\2F6DA054CAD11747A0E2F9A58425D8AD\\5DC3FFC08AE5814D96B3D88F66E2BCC2\\0A6C6CC5CB763739A3F79AB8CD8BEAE9||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.shared\\dtos\\responses\\credentialsresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|solutionrelative:routermanager.shared\\dtos\\responses\\credentialsresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.shared\\dtos\\responses\\updatepackageresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|solutionrelative:routermanager.shared\\dtos\\responses\\updatepackageresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.shared\\dtos\\auth\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|solutionrelative:routermanager.shared\\dtos\\auth\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.shared\\dtos\\auth\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|solutionrelative:routermanager.shared\\dtos\\auth\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.shared\\dtos\\auth\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|solutionrelative:routermanager.shared\\dtos\\auth\\authresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C039DF0-48CA-469C-86B1-A1A77F1E92E6}|RouterManager.Application\\RouterManager.Application.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.application\\services\\credentialservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C039DF0-48CA-469C-86B1-A1A77F1E92E6}|RouterManager.Application\\RouterManager.Application.csproj|solutionrelative:routermanager.application\\services\\credentialservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C039DF0-48CA-469C-86B1-A1A77F1E92E6}|RouterManager.Application\\RouterManager.Application.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.application\\services\\updateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C039DF0-48CA-469C-86B1-A1A77F1E92E6}|RouterManager.Application\\RouterManager.Application.csproj|solutionrelative:routermanager.application\\services\\updateservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BCC43FF-850D-4DDC-B6C5-B29D70B4F609}|RouterManager.Domain\\RouterManager.Domain.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.domain\\entities\\routerprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4BCC43FF-850D-4DDC-B6C5-B29D70B4F609}|RouterManager.Domain\\RouterManager.Domain.csproj|solutionrelative:routermanager.domain\\entities\\routerprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.shared\\dtos\\requests\\createrouterprofilerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.shared\\dtos\\requests\\createrouterprofilerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|solutionrelative:routermanager.shared\\dtos\\requests\\createrouterprofilerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.api\\controllers\\routerprofilescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.api\\controllers\\routerprofilescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\controllers\\routerprofilescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.api\\security\\fixedtokenauthenticationhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.api\\security\\fixedtokenauthenticationhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\security\\fixedtokenauthenticationhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.api\\middleware\\apikeymiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.api\\middleware\\apikeymiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\middleware\\apikeymiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.api\\controllers\\devicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.api\\controllers\\devicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\controllers\\devicescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{6B30470E-4805-4DAF-8A91-B2741308A945}|RouterManager.Infrastructure\\RouterManager.Infrastructure.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.infrastructure\\migrations\\20251004110412_adduseridtorouterprofiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{6B30470E-4805-4DAF-8A91-B2741308A945}|RouterManager.Infrastructure\\RouterManager.Infrastructure.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.infrastructure\\migrations\\20251004110412_adduseridtorouterprofiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{6B30470E-4805-4DAF-8A91-B2741308A945}|RouterManager.Infrastructure\\RouterManager.Infrastructure.csproj|solutionrelative:routermanager.infrastructure\\migrations\\20251004110412_adduseridtorouterprofiles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.api\\controllers\\telemetrycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.api\\controllers\\telemetrycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\controllers\\telemetrycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagerapi\\routermanager.api\\controllers\\credentialscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.api\\controllers\\credentialscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\controllers\\credentialscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BCC43FF-850D-4DDC-B6C5-B29D70B4F609}|RouterManager.Domain\\RouterManager.Domain.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.domain\\entities\\routermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BCC43FF-850D-4DDC-B6C5-B29D70B4F609}|RouterManager.Domain\\RouterManager.Domain.csproj|solutionrelative:routermanager.domain\\entities\\routermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B30470E-4805-4DAF-8A91-B2741308A945}|RouterManager.Infrastructure\\RouterManager.Infrastructure.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.infrastructure\\repositories\\credentialrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6B30470E-4805-4DAF-8A91-B2741308A945}|RouterManager.Infrastructure\\RouterManager.Infrastructure.csproj|solutionrelative:routermanager.infrastructure\\repositories\\credentialrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.api\\controllers\\providerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\controllers\\providerscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.api\\middleware\\apiauditmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\middleware\\apiauditmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BCC43FF-850D-4DDC-B6C5-B29D70B4F609}|RouterManager.Domain\\RouterManager.Domain.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.domain\\entities\\updatepackage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BCC43FF-850D-4DDC-B6C5-B29D70B4F609}|RouterManager.Domain\\RouterManager.Domain.csproj|solutionrelative:routermanager.domain\\entities\\updatepackage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4BCC43FF-850D-4DDC-B6C5-B29D70B4F609}|RouterManager.Domain\\RouterManager.Domain.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.domain\\entities\\updateaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4BCC43FF-850D-4DDC-B6C5-B29D70B4F609}|RouterManager.Domain\\RouterManager.Domain.csproj|solutionrelative:routermanager.domain\\entities\\updateaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.api\\controllers\\updatescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\controllers\\updatescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6B30470E-4805-4DAF-8A91-B2741308A945}|RouterManager.Infrastructure\\RouterManager.Infrastructure.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.infrastructure\\repositories\\updaterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6B30470E-4805-4DAF-8A91-B2741308A945}|RouterManager.Infrastructure\\RouterManager.Infrastructure.csproj|solutionrelative:routermanager.infrastructure\\repositories\\updaterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.api\\models\\remoteactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\models\\remoteactions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.api\\controllers\\adminproviderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\controllers\\adminproviderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.shared\\dtos\\requests\\updaterouterprofilerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17AD4D58-1DF0-4FAA-A640-AAE8FA3E72B5}|RouterManager.Shared\\RouterManager.Shared.csproj|solutionrelative:routermanager.shared\\dtos\\requests\\updaterouterprofilerequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{6C039DF0-48CA-469C-86B1-A1A77F1E92E6}|RouterManager.Application\\RouterManager.Application.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.application\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{6C039DF0-48CA-469C-86B1-A1A77F1E92E6}|RouterManager.Application\\RouterManager.Application.csproj|solutionrelative:routermanager.application\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.api\\controllers\\adminroutermodelscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\controllers\\adminroutermodelscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.api\\controllers\\adminroutercredentialscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\controllers\\adminroutercredentialscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|c:\\users\\cristiano\\desktop\\routermanagersolution\\routermanagerapi\\routermanager.api\\models\\updateordersdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A4813058-DB58-4D6F-AC96-BA8EB4E42177}|RouterManager.Api\\RouterManager.Api.csproj|solutionrelative:routermanager.api\\models\\updateordersdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -126,7 +204,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -138,61 +216,346 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "CredentialsController.cs",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\Controllers\\CredentialsController.cs",
-              "RelativeDocumentMoniker": "RouterManager.Api\\Controllers\\CredentialsController.cs",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\Controllers\\CredentialsController.cs",
-              "RelativeToolTip": "RouterManager.Api\\Controllers\\CredentialsController.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 47,
+              "Title": "AdminRouterCredentialsController.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Controllers\\AdminRouterCredentialsController.cs",
+              "RelativeDocumentMoniker": "RouterManager.Api\\Controllers\\AdminRouterCredentialsController.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Controllers\\AdminRouterCredentialsController.cs",
+              "RelativeToolTip": "RouterManager.Api\\Controllers\\AdminRouterCredentialsController.cs",
+              "ViewState": "AgIAAGwAAAAAAAAAAABRwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T12:04:25.551Z",
+              "WhenOpened": "2025-10-08T19:27:40.007Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "20251004110412_AddUserIdToRouterProfiles.cs",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Infrastructure\\Migrations\\20251004110412_AddUserIdToRouterProfiles.cs",
-              "RelativeDocumentMoniker": "RouterManager.Infrastructure\\Migrations\\20251004110412_AddUserIdToRouterProfiles.cs",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Infrastructure\\Migrations\\20251004110412_AddUserIdToRouterProfiles.cs",
-              "RelativeToolTip": "RouterManager.Infrastructure\\Migrations\\20251004110412_AddUserIdToRouterProfiles.cs",
-              "ViewState": "AgIAAEgAAAAAAAAAAEBVwAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 46,
+              "Title": "AdminRouterModelsController.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Controllers\\AdminRouterModelsController.cs",
+              "RelativeDocumentMoniker": "RouterManager.Api\\Controllers\\AdminRouterModelsController.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Controllers\\AdminRouterModelsController.cs",
+              "RelativeToolTip": "RouterManager.Api\\Controllers\\AdminRouterModelsController.cs",
+              "ViewState": "AgIAAGcAAAAAAAAAAABRwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T11:10:47.549Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "DevicesController.cs",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\Controllers\\DevicesController.cs",
-              "RelativeDocumentMoniker": "RouterManager.Api\\Controllers\\DevicesController.cs",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\Controllers\\DevicesController.cs",
-              "RelativeToolTip": "RouterManager.Api\\Controllers\\DevicesController.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAABRwB4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T11:00:31.312Z",
+              "WhenOpened": "2025-10-08T19:26:55.27Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "ApiKeyMiddleware.cs",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\Middleware\\ApiKeyMiddleware.cs",
-              "RelativeDocumentMoniker": "RouterManager.Api\\Middleware\\ApiKeyMiddleware.cs",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\Middleware\\ApiKeyMiddleware.cs",
-              "RelativeToolTip": "RouterManager.Api\\Middleware\\ApiKeyMiddleware.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 45,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Application\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "RouterManager.Application\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Application\\Services\\AuthService.cs",
+              "RelativeToolTip": "RouterManager.Application\\Services\\AuthService.cs",
+              "ViewState": "AgIAADcAAAAAAAAAAABRwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T10:41:57.845Z"
+              "WhenOpened": "2025-10-08T19:24:38.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "UpdateRouterProfileRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Requests\\UpdateRouterProfileRequest.cs",
+              "RelativeDocumentMoniker": "RouterManager.Shared\\Dtos\\Requests\\UpdateRouterProfileRequest.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Requests\\UpdateRouterProfileRequest.cs",
+              "RelativeToolTip": "RouterManager.Shared\\Dtos\\Requests\\UpdateRouterProfileRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T16:42:46.527Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Microsoft.Common.CurrentVersion.targets",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ViewState": "AgIAAAEVAAAAAAAAAIAwwBEVAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-10-08T15:52:23.011Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "UpdateOrdersDtos.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Models\\UpdateOrdersDtos.cs",
+              "RelativeDocumentMoniker": "RouterManager.Api\\Models\\UpdateOrdersDtos.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Models\\UpdateOrdersDtos.cs",
+              "RelativeToolTip": "RouterManager.Api\\Models\\UpdateOrdersDtos.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAEBUwAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-08T20:07:48.395Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "AdminProvidersController.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Controllers\\AdminProvidersController.cs",
+              "RelativeDocumentMoniker": "RouterManager.Api\\Controllers\\AdminProvidersController.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Controllers\\AdminProvidersController.cs",
+              "RelativeToolTip": "RouterManager.Api\\Controllers\\AdminProvidersController.cs",
+              "ViewState": "AgIAAFUAAAAAAAAAAEBVwFkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T10:40:46.596Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "20251006091355_AddSerialNumberToUpdatePackages.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Infrastructure\\Migrations\\20251006091355_AddSerialNumberToUpdatePackages.cs",
+              "RelativeDocumentMoniker": "RouterManager.Infrastructure\\Migrations\\20251006091355_AddSerialNumberToUpdatePackages.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Infrastructure\\Migrations\\20251006091355_AddSerialNumberToUpdatePackages.cs",
+              "RelativeToolTip": "RouterManager.Infrastructure\\Migrations\\20251006091355_AddSerialNumberToUpdatePackages.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAwCUAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T09:13:55.377Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "ExceptionHandlingMiddleware.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "RelativeDocumentMoniker": "RouterManager.Api\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "RelativeToolTip": "RouterManager.Api\\Middleware\\ExceptionHandlingMiddleware.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T08:42:21.892Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CheckForUpdateRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Requests\\CheckForUpdateRequest.cs",
+              "RelativeDocumentMoniker": "RouterManager.Shared\\Dtos\\Requests\\CheckForUpdateRequest.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Requests\\CheckForUpdateRequest.cs",
+              "RelativeToolTip": "RouterManager.Shared\\Dtos\\Requests\\CheckForUpdateRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T17:54:20.869Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Services.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Application\\Interfaces\\Services.cs",
+              "RelativeDocumentMoniker": "RouterManager.Application\\Interfaces\\Services.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Application\\Interfaces\\Services.cs",
+              "RelativeToolTip": "RouterManager.Application\\Interfaces\\Services.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAA9wCwAAABqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T17:54:36.262Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TelemetryService.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Application\\Services\\TelemetryService.cs",
+              "RelativeDocumentMoniker": "RouterManager.Application\\Services\\TelemetryService.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Application\\Services\\TelemetryService.cs",
+              "RelativeToolTip": "RouterManager.Application\\Services\\TelemetryService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAmwAwAAABZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T17:55:00.292Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DatabaseSeeder.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Infrastructure\\Seed\\DatabaseSeeder.cs",
+              "RelativeDocumentMoniker": "RouterManager.Infrastructure\\Seed\\DatabaseSeeder.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Infrastructure\\Seed\\DatabaseSeeder.cs",
+              "RelativeToolTip": "RouterManager.Infrastructure\\Seed\\DatabaseSeeder.cs",
+              "ViewState": "AgIAAJIAAAAAAAAAAADwv64AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T17:55:17.334Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\appsettings.json",
+              "RelativeDocumentMoniker": "RouterManager.Api\\appsettings.json",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\appsettings.json",
+              "RelativeToolTip": "RouterManager.Api\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-02T18:42:13.982Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ReportStatusRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Requests\\ReportStatusRequest.cs",
+              "RelativeDocumentMoniker": "RouterManager.Shared\\Dtos\\Requests\\ReportStatusRequest.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Requests\\ReportStatusRequest.cs",
+              "RelativeToolTip": "RouterManager.Shared\\Dtos\\Requests\\ReportStatusRequest.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAYAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-02T17:54:11.449Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UpdateOrdersController.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Controllers\\UpdateOrdersController.cs",
+              "RelativeDocumentMoniker": "RouterManager.Api\\Controllers\\UpdateOrdersController.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Controllers\\UpdateOrdersController.cs",
+              "RelativeToolTip": "RouterManager.Api\\Controllers\\UpdateOrdersController.cs",
+              "ViewState": "AgIAAGcAAAAAAAAAAIBJwGkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T06:57:06.879Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "RouterManager.Api.csproj",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\RouterManager.Api.csproj",
+              "RelativeDocumentMoniker": "RouterManager.Api\\RouterManager.Api.csproj",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\RouterManager.Api.csproj",
+              "RelativeToolTip": "RouterManager.Api\\RouterManager.Api.csproj",
+              "ViewState": "AgIAACAAAAAAAAAAAABBwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-06T06:31:37.961Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "UpdatePackage.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Domain\\Entities\\UpdatePackage.cs",
+              "RelativeDocumentMoniker": "RouterManager.Domain\\Entities\\UpdatePackage.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Domain\\Entities\\UpdatePackage.cs",
+              "RelativeToolTip": "RouterManager.Domain\\Entities\\UpdatePackage.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAMBUwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T06:56:15.99Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "UpdateAction.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Domain\\Entities\\UpdateAction.cs",
+              "RelativeDocumentMoniker": "RouterManager.Domain\\Entities\\UpdateAction.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Domain\\Entities\\UpdateAction.cs",
+              "RelativeToolTip": "RouterManager.Domain\\Entities\\UpdateAction.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAEBUwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T06:56:24.81Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "UpdatesController.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Controllers\\UpdatesController.cs",
+              "RelativeDocumentMoniker": "RouterManager.Api\\Controllers\\UpdatesController.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Controllers\\UpdatesController.cs",
+              "RelativeToolTip": "RouterManager.Api\\Controllers\\UpdatesController.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAEBVwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T06:56:46.435Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "UpdateRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Infrastructure\\Repositories\\UpdateRepository.cs",
+              "RelativeDocumentMoniker": "RouterManager.Infrastructure\\Repositories\\UpdateRepository.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Infrastructure\\Repositories\\UpdateRepository.cs",
+              "RelativeToolTip": "RouterManager.Infrastructure\\Repositories\\UpdateRepository.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAEBVwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T06:56:57.499Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "RemoteActions.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Models\\RemoteActions.cs",
+              "RelativeDocumentMoniker": "RouterManager.Api\\Models\\RemoteActions.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Models\\RemoteActions.cs",
+              "RelativeToolTip": "RouterManager.Api\\Models\\RemoteActions.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAMBUwC0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T07:08:18.678Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "ApiAuditMiddleware.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Middleware\\ApiAuditMiddleware.cs",
+              "RelativeDocumentMoniker": "RouterManager.Api\\Middleware\\ApiAuditMiddleware.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Middleware\\ApiAuditMiddleware.cs",
+              "RelativeToolTip": "RouterManager.Api\\Middleware\\ApiAuditMiddleware.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T20:16:02.389Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "ProvidersController.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Controllers\\ProvidersController.cs",
+              "RelativeDocumentMoniker": "RouterManager.Api\\Controllers\\ProvidersController.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Controllers\\ProvidersController.cs",
+              "RelativeToolTip": "RouterManager.Api\\Controllers\\ProvidersController.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAEBVwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T15:26:52.04Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "CredentialRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Infrastructure\\Repositories\\CredentialRepository.cs",
+              "RelativeDocumentMoniker": "RouterManager.Infrastructure\\Repositories\\CredentialRepository.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Infrastructure\\Repositories\\CredentialRepository.cs",
+              "RelativeToolTip": "RouterManager.Infrastructure\\Repositories\\CredentialRepository.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAEBVwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T14:34:40.055Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "RouterModel.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Domain\\Entities\\RouterModel.cs",
+              "RelativeDocumentMoniker": "RouterManager.Domain\\Entities\\RouterModel.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Domain\\Entities\\RouterModel.cs",
+              "RelativeToolTip": "RouterManager.Domain\\Entities\\RouterModel.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAIBIwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T14:34:25.303Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Infrastructure\\Class1.cs",
+              "RelativeDocumentMoniker": "RouterManager.Infrastructure\\Class1.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Infrastructure\\Class1.cs",
+              "RelativeToolTip": "RouterManager.Infrastructure\\Class1.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAzwCoAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-03T15:19:45.822Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
               "Title": "AuthValidators.cs",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\Validators\\AuthValidators.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Validators\\AuthValidators.cs",
               "RelativeDocumentMoniker": "RouterManager.Api\\Validators\\AuthValidators.cs",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\Validators\\AuthValidators.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Validators\\AuthValidators.cs",
               "RelativeToolTip": "RouterManager.Api\\Validators\\AuthValidators.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -200,61 +563,96 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\appsettings.json",
-              "RelativeDocumentMoniker": "RouterManager.Api\\appsettings.json",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\appsettings.json",
-              "RelativeToolTip": "RouterManager.Api\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-02T18:42:13.982Z",
-              "EditorCaption": ""
+              "DocumentIndex": 29,
+              "Title": "ApiKeyMiddleware.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Middleware\\ApiKeyMiddleware.cs",
+              "RelativeDocumentMoniker": "RouterManager.Api\\Middleware\\ApiKeyMiddleware.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Middleware\\ApiKeyMiddleware.cs",
+              "RelativeToolTip": "RouterManager.Api\\Middleware\\ApiKeyMiddleware.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T10:41:57.845Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 30,
+              "Title": "DevicesController.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Controllers\\DevicesController.cs",
+              "RelativeDocumentMoniker": "RouterManager.Api\\Controllers\\DevicesController.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Controllers\\DevicesController.cs",
+              "RelativeToolTip": "RouterManager.Api\\Controllers\\DevicesController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAABRwB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T11:00:31.312Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "20251004110412_AddUserIdToRouterProfiles.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Infrastructure\\Migrations\\20251004110412_AddUserIdToRouterProfiles.cs",
+              "RelativeDocumentMoniker": "RouterManager.Infrastructure\\Migrations\\20251004110412_AddUserIdToRouterProfiles.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Infrastructure\\Migrations\\20251004110412_AddUserIdToRouterProfiles.cs",
+              "RelativeToolTip": "RouterManager.Infrastructure\\Migrations\\20251004110412_AddUserIdToRouterProfiles.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAEBVwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T11:10:47.549Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "CredentialsController.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Controllers\\CredentialsController.cs",
+              "RelativeDocumentMoniker": "RouterManager.Api\\Controllers\\CredentialsController.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Controllers\\CredentialsController.cs",
+              "RelativeToolTip": "RouterManager.Api\\Controllers\\CredentialsController.cs",
+              "ViewState": "AgIAADQAAAAAAAAAAEBVwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T12:04:25.551Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "RouterManager.Shared.csproj",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\RouterManager.Shared.csproj",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\RouterManager.Shared.csproj",
               "RelativeDocumentMoniker": "RouterManager.Shared\\RouterManager.Shared.csproj",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\RouterManager.Shared.csproj",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\RouterManager.Shared.csproj",
               "RelativeToolTip": "RouterManager.Shared\\RouterManager.Shared.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-10-04T11:43:29.617Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "TelemetryController.cs",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\Controllers\\TelemetryController.cs",
-              "RelativeDocumentMoniker": "RouterManager.Api\\Controllers\\TelemetryController.cs",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\Controllers\\TelemetryController.cs",
-              "RelativeToolTip": "RouterManager.Api\\Controllers\\TelemetryController.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-04T11:17:28.405Z",
+              "WhenOpened": "2025-10-04T11:43:29.617Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 32,
+              "Title": "TelemetryController.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Controllers\\TelemetryController.cs",
+              "RelativeDocumentMoniker": "RouterManager.Api\\Controllers\\TelemetryController.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Controllers\\TelemetryController.cs",
+              "RelativeToolTip": "RouterManager.Api\\Controllers\\TelemetryController.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-04T11:17:28.405Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
               "Title": "FixedTokenAuthenticationHandler.cs",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\Security\\FixedTokenAuthenticationHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Security\\FixedTokenAuthenticationHandler.cs",
               "RelativeDocumentMoniker": "RouterManager.Api\\Security\\FixedTokenAuthenticationHandler.cs",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\Security\\FixedTokenAuthenticationHandler.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Security\\FixedTokenAuthenticationHandler.cs",
               "RelativeToolTip": "RouterManager.Api\\Security\\FixedTokenAuthenticationHandler.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAIBZwCYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-03T15:44:23.08Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 13,
               "Title": "appsettings.Development.json",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\appsettings.Development.json",
               "RelativeDocumentMoniker": "RouterManager.Api\\appsettings.Development.json",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\appsettings.Development.json",
               "RelativeToolTip": "RouterManager.Api\\appsettings.Development.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
@@ -262,23 +660,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Infrastructure\\Class1.cs",
-              "RelativeDocumentMoniker": "RouterManager.Infrastructure\\Class1.cs",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Infrastructure\\Class1.cs",
-              "RelativeToolTip": "RouterManager.Infrastructure\\Class1.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAMBcwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T15:19:45.822Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 25,
               "Title": "RouterProfile.cs",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Domain\\Entities\\RouterProfile.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Domain\\Entities\\RouterProfile.cs",
               "RelativeDocumentMoniker": "RouterManager.Domain\\Entities\\RouterProfile.cs",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Domain\\Entities\\RouterProfile.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Domain\\Entities\\RouterProfile.cs",
               "RelativeToolTip": "RouterManager.Domain\\Entities\\RouterProfile.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAIBYwBAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -286,24 +672,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 14,
               "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\Controllers\\AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "RouterManager.Api\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Controllers\\AuthController.cs",
               "RelativeToolTip": "RouterManager.Api\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAABRwCAAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAAAAAAAAAEBVwCAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-02T17:58:54.223Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-02T17:58:54.223Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 26,
               "Title": "CreateRouterProfileRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Requests\\CreateRouterProfileRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Requests\\CreateRouterProfileRequest.cs",
               "RelativeDocumentMoniker": "RouterManager.Shared\\Dtos\\Requests\\CreateRouterProfileRequest.cs",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Requests\\CreateRouterProfileRequest.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Requests\\CreateRouterProfileRequest.cs",
               "RelativeToolTip": "RouterManager.Shared\\Dtos\\Requests\\CreateRouterProfileRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -311,48 +696,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 27,
               "Title": "RouterProfilesController.cs",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\Controllers\\RouterProfilesController.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Controllers\\RouterProfilesController.cs",
               "RelativeDocumentMoniker": "RouterManager.Api\\Controllers\\RouterProfilesController.cs",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\Controllers\\RouterProfilesController.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Controllers\\RouterProfilesController.cs",
               "RelativeToolTip": "RouterManager.Api\\Controllers\\RouterProfilesController.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAABRwDsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAKQAAAAAAAAAAIBZwKkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-03T15:20:13.924Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "CheckForUpdateRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Requests\\CheckForUpdateRequest.cs",
-              "RelativeDocumentMoniker": "RouterManager.Shared\\Dtos\\Requests\\CheckForUpdateRequest.cs",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Requests\\CheckForUpdateRequest.cs",
-              "RelativeToolTip": "RouterManager.Shared\\Dtos\\Requests\\CheckForUpdateRequest.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAABRwAEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-02T17:54:20.869Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ReportStatusRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Requests\\ReportStatusRequest.cs",
-              "RelativeDocumentMoniker": "RouterManager.Shared\\Dtos\\Requests\\ReportStatusRequest.cs",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Requests\\ReportStatusRequest.cs",
-              "RelativeToolTip": "RouterManager.Shared\\Dtos\\Requests\\ReportStatusRequest.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAABRwAEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-02T17:54:11.449Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 18,
               "Title": "CredentialsResponse.cs",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Responses\\CredentialsResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Responses\\CredentialsResponse.cs",
               "RelativeDocumentMoniker": "RouterManager.Shared\\Dtos\\Responses\\CredentialsResponse.cs",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Responses\\CredentialsResponse.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Responses\\CredentialsResponse.cs",
               "RelativeToolTip": "RouterManager.Shared\\Dtos\\Responses\\CredentialsResponse.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -360,109 +721,71 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 17,
               "Title": "0A6C6CC5CB763739A3F79AB8CD8BEAE9",
               "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\.vs\\CopilotSnapshots\\2F6DA054CAD11747A0E2F9A58425D8AD\\5DC3FFC08AE5814D96B3D88F66E2BCC2\\0A6C6CC5CB763739A3F79AB8CD8BEAE9",
-              "RelativeDocumentMoniker": ".vs\\CopilotSnapshots\\2F6DA054CAD11747A0E2F9A58425D8AD\\5DC3FFC08AE5814D96B3D88F66E2BCC2\\0A6C6CC5CB763739A3F79AB8CD8BEAE9",
+              "RelativeDocumentMoniker": "..\\..\\RouterManagerApi\\.vs\\CopilotSnapshots\\2F6DA054CAD11747A0E2F9A58425D8AD\\5DC3FFC08AE5814D96B3D88F66E2BCC2\\0A6C6CC5CB763739A3F79AB8CD8BEAE9",
               "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\.vs\\CopilotSnapshots\\2F6DA054CAD11747A0E2F9A58425D8AD\\5DC3FFC08AE5814D96B3D88F66E2BCC2\\0A6C6CC5CB763739A3F79AB8CD8BEAE9",
-              "RelativeToolTip": ".vs\\CopilotSnapshots\\2F6DA054CAD11747A0E2F9A58425D8AD\\5DC3FFC08AE5814D96B3D88F66E2BCC2\\0A6C6CC5CB763739A3F79AB8CD8BEAE9",
+              "RelativeToolTip": "..\\..\\RouterManagerApi\\.vs\\CopilotSnapshots\\2F6DA054CAD11747A0E2F9A58425D8AD\\5DC3FFC08AE5814D96B3D88F66E2BCC2\\0A6C6CC5CB763739A3F79AB8CD8BEAE9",
               "ViewState": "AgIAAFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-10-02T17:47:47.897Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 16,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Program.cs",
               "RelativeDocumentMoniker": "RouterManager.Api\\Program.cs",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Api\\Program.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Api\\Program.cs",
               "RelativeToolTip": "RouterManager.Api\\Program.cs",
-              "ViewState": "AgIAANYAAAAAAAAAAABRwNkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAANoAAAAAAAAAAIBJwNwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-02T17:41:23.114Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-02T17:41:23.114Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 19,
               "Title": "UpdatePackageResponse.cs",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Responses\\UpdatePackageResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Responses\\UpdatePackageResponse.cs",
               "RelativeDocumentMoniker": "RouterManager.Shared\\Dtos\\Responses\\UpdatePackageResponse.cs",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Responses\\UpdatePackageResponse.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Responses\\UpdatePackageResponse.cs",
               "RelativeToolTip": "RouterManager.Shared\\Dtos\\Responses\\UpdatePackageResponse.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAxwAEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAMBcwAEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-02T17:54:25.866Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Services.cs",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Application\\Interfaces\\Services.cs",
-              "RelativeDocumentMoniker": "RouterManager.Application\\Interfaces\\Services.cs",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Application\\Interfaces\\Services.cs",
-              "RelativeToolTip": "RouterManager.Application\\Interfaces\\Services.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAIBkwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-02T17:54:36.262Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "DatabaseSeeder.cs",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Infrastructure\\Seed\\DatabaseSeeder.cs",
-              "RelativeDocumentMoniker": "RouterManager.Infrastructure\\Seed\\DatabaseSeeder.cs",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Infrastructure\\Seed\\DatabaseSeeder.cs",
-              "RelativeToolTip": "RouterManager.Infrastructure\\Seed\\DatabaseSeeder.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAABRwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-02T17:55:17.334Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 24,
               "Title": "UpdateService.cs",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Application\\Services\\UpdateService.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Application\\Services\\UpdateService.cs",
               "RelativeDocumentMoniker": "RouterManager.Application\\Services\\UpdateService.cs",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Application\\Services\\UpdateService.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Application\\Services\\UpdateService.cs",
               "RelativeToolTip": "RouterManager.Application\\Services\\UpdateService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAAAAAAAAAEBVwCAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-02T17:55:04.984Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "TelemetryService.cs",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Application\\Services\\TelemetryService.cs",
-              "RelativeDocumentMoniker": "RouterManager.Application\\Services\\TelemetryService.cs",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Application\\Services\\TelemetryService.cs",
-              "RelativeToolTip": "RouterManager.Application\\Services\\TelemetryService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-02T17:55:00.292Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 23,
               "Title": "CredentialService.cs",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Application\\Services\\CredentialService.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Application\\Services\\CredentialService.cs",
               "RelativeDocumentMoniker": "RouterManager.Application\\Services\\CredentialService.cs",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Application\\Services\\CredentialService.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Application\\Services\\CredentialService.cs",
               "RelativeToolTip": "RouterManager.Application\\Services\\CredentialService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAABRwBcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-02T17:54:56.246Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 22,
               "Title": "AuthResponse.cs",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Auth\\AuthResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Auth\\AuthResponse.cs",
               "RelativeDocumentMoniker": "RouterManager.Shared\\Dtos\\Auth\\AuthResponse.cs",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Auth\\AuthResponse.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Auth\\AuthResponse.cs",
               "RelativeToolTip": "RouterManager.Shared\\Dtos\\Auth\\AuthResponse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -470,11 +793,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 21,
               "Title": "RegisterRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Auth\\RegisterRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Auth\\RegisterRequest.cs",
               "RelativeDocumentMoniker": "RouterManager.Shared\\Dtos\\Auth\\RegisterRequest.cs",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Auth\\RegisterRequest.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Auth\\RegisterRequest.cs",
               "RelativeToolTip": "RouterManager.Shared\\Dtos\\Auth\\RegisterRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -482,11 +805,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 20,
               "Title": "LoginRequest.cs",
-              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Auth\\LoginRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Auth\\LoginRequest.cs",
               "RelativeDocumentMoniker": "RouterManager.Shared\\Dtos\\Auth\\LoginRequest.cs",
-              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Auth\\LoginRequest.cs",
+              "ToolTip": "C:\\Users\\Cristiano\\Desktop\\RouterManagerSolution\\RouterManagerApi\\RouterManager.Shared\\Dtos\\Auth\\LoginRequest.cs",
               "RelativeToolTip": "RouterManager.Shared\\Dtos\\Auth\\LoginRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

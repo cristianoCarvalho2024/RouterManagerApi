@@ -1,0 +1,119 @@
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using RouterManager.Infrastructure.Persistence;
+using RouterManager.Domain.Entities;
+using RouterManager.Api.Models;
+using System.Text.Json;
+
+namespace RouterManager.Api.Controllers;
+
+[ApiController]
+[Route("api/v1/update-orders")]
+[Authorize(Policy = "AdminOnly")]
+public class UpdateOrdersController : ControllerBase
+{
+    private readonly RouterManagerDbContext _db;
+    public UpdateOrdersController(RouterManagerDbContext db) => _db = db;
+
+    /// <summary>
+    /// Cria uma nova ordem de atualização remota (RemoteAction).
+    /// </summary>
+    /// <remarks>
+    /// Envie requestPayload como OBJETO JSON (não string). Exemplos:
+    ///
+    /// HttpDownload:
+    /// {
+    ///   "providerId": 5,
+    ///   "modelIdentifier": "Huawei_EG8145V5_V2",
+    ///   "firmwareVersion": null,
+    ///   "requestPayload": {
+    ///     "ActionType": "HttpDownload",
+    ///     "Payload": {
+    ///       "Url": "http://example.com/firmware.bin",
+    ///       "Method": "GET",
+    ///       "Headers": { "X-Custom-Header": "value" },
+    ///       "Body": null,
+    ///       "TimeoutSeconds": 300
+    ///     }
+    ///   }
+    /// }
+    ///
+    /// RouterCommand:
+    /// {
+    ///   "providerId": 5,
+    ///   "modelIdentifier": "Huawei_EG8145V5_V2",
+    ///   "firmwareVersion": null,
+    ///   "requestPayload": {
+    ///     "ActionType": "RouterCommand",
+    ///     "Payload": {
+    ///       "Command": "CreateGuestNetwork",
+    ///       "TargetService": "IWifiConfigurationService",
+    ///       "Parameters": {
+    ///         "Ssid": "MinhaRedeDeConvidados",
+    ///         "Password": "senha_forte_123",
+    ///         "IsEnabled": true
+    ///       }
+    ///     }
+    ///   }
+    /// }
+    /// </remarks>
+    public record CreateOrderRequest(int ProviderId, string ModelIdentifier, string? FirmwareVersion, RemoteActionEnvelope RequestPayload);
+
+    /// <summary>
+    /// Cadastra uma ordem.
+    /// </summary>
+    /// <param name="req">Critérios e o JSON com a ação remota.</param>
+    [HttpPost]
+    [ProducesResponseType(typeof(object), 201)]
+    [ProducesResponseType(400)]
+    public async Task<IActionResult> Create([FromBody] CreateOrderRequest req, CancellationToken ct)
+    {
+        if (req.RequestPayload == null || string.IsNullOrWhiteSpace(req.RequestPayload.ActionType))
+            return BadRequest("RequestPayload.ActionType requerido");
+
+        switch (req.RequestPayload.ActionType)
+        {
+            case RemoteActionTypes.HttpDownload:
+                var http = req.RequestPayload.Payload.Deserialize<HttpDownloadPayload>();
+                if (http == null || string.IsNullOrWhiteSpace(http.Url))
+                    return BadRequest("Payload.HttpDownload.Url requerido");
+                break;
+            case RemoteActionTypes.RouterCommand:
+                var cmd = req.RequestPayload.Payload.Deserialize<RouterCommandPayload>();
+                if (cmd == null || string.IsNullOrWhiteSpace(cmd.Command) || string.IsNullOrWhiteSpace(cmd.TargetService))
+                    return BadRequest("Payload.RouterCommand.Command e TargetService requeridos");
+                break;
+            default:
+                return BadRequest("ActionType não suportado");
+        }
+
+        // Serializa o objeto recebido para armazenar em texto no banco
+        var payloadJson = JsonSerializer.Serialize(req.RequestPayload);
+
+        var entity = new UpdatePackage
+        {
+            ProviderId = req.ProviderId,
+            ModelIdentifier = req.ModelIdentifier,
+            FirmwareVersion = req.FirmwareVersion,
+            RequestPayload = payloadJson,
+            CreatedAt = DateTime.UtcNow
+        };
+        _db.UpdatePackages.Add(entity);
+        await _db.SaveChangesAsync(ct);
+        return CreatedAtAction(nameof(GetById), new { id = entity.Id }, new { entity.Id });
+    }
+
+    /// <summary>
+    /// Retorna a ordem cadastrada.
+    /// </summary>
+    [HttpGet("{id:int}")]
+    [ProducesResponseType(200)]
+    [ProducesResponseType(404)]
+    public async Task<IActionResult> GetById(int id, CancellationToken ct)
+    {
+        var e = await _db.UpdatePackages.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id, ct);
+        if (e == null) return NotFound();
+        return Ok(new { e.Id, e.ProviderId, e.ModelIdentifier, e.FirmwareVersion, e.RequestPayload, e.CreatedAt });
+    }
+}

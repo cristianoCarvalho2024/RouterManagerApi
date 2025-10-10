@@ -1,0 +1,24 @@
+﻿using RouterManager.Application.Interfaces;
+using RouterManager.Shared.Dtos.Responses;
+using System.Linq;
+
+namespace RouterManager.Application.Services;
+
+public class CredentialService : ICredentialService
+{
+    private readonly ICredentialRepository _repo;
+    public CredentialService(ICredentialRepository repo) => _repo = repo;
+
+    public async Task<CredentialsResponse?> GetCredentialsAsync(int providerId, string modelIdentifier, CancellationToken ct = default)
+    {
+        var list = await _repo.GetPlainByProviderAndModelAsync(providerId, modelIdentifier, ct);
+        if (list == null || !list.Any()) return null;
+        var response = new CredentialsResponse
+        {
+            ProviderId = providerId,
+            Model = modelIdentifier,
+            Credentials = list.Select(c => new CredentialItem(c.Username, c.PasswordPlain)).ToList()
+        };
+        return response;
+    }
+}

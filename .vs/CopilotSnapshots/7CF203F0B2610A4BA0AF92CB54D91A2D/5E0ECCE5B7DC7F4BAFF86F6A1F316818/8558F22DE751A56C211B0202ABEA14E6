@@ -1,0 +1,5 @@
+﻿namespace RouterManager.Api.Models;
+
+public record UpdateActionDto(string ActionType, string Payload);
+public record CreateUpdateOrderRequest(string Name, List<UpdateActionDto> Actions);
+public record UpdateUpdateOrderRequest(int Id, string Name, List<UpdateActionDto> Actions);

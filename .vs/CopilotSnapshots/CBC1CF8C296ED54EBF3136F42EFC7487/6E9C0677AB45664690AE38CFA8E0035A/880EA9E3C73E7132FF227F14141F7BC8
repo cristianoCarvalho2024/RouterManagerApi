@@ -1,0 +1,118 @@
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using RouterManager.Infrastructure.Persistence;
+using RouterManager.Domain.Entities;
+using RouterManager.Api.Models;
+using System.Text.Json;
+
+namespace RouterManager.Api.Controllers;
+
+[ApiController]
+[Route("api/v1/update-orders")]
+[Authorize(Policy = "AdminOnly")]
+public class UpdateOrdersController : ControllerBase
+{
+    private readonly RouterManagerDbContext _db;
+    public UpdateOrdersController(RouterManagerDbContext db) => _db = db;
+
+    /// <summary>
+    /// Cria uma nova ordem de atualização remota (RemoteAction).
+    /// </summary>
+    /// <remarks>
+    /// Exemplos de payloads aceitos (RequestPayload):
+    ///
+    /// HttpDownload:
+    /// {
+    ///   "ActionType": "HttpDownload",
+    ///   "Payload": {
+    ///     "Url": "http://example.com/firmware.bin",
+    ///     "Method": "GET",
+    ///     "Headers": { "X-Custom-Header": "value" },
+    ///     "Body": null,
+    ///     "TimeoutSeconds": 300
+    ///   }
+    /// }
+    ///
+    /// RouterCommand:
+    /// {
+    ///   "ActionType": "RouterCommand",
+    ///   "Payload": {
+    ///     "Command": "CreateGuestNetwork",
+    ///     "TargetService": "IWifiConfigurationService",
+    ///     "Parameters": {
+    ///       "Ssid": "MinhaRedeDeConvidados",
+    ///       "Password": "senha_forte_123",
+    ///       "IsEnabled": true
+    ///     }
+    ///   }
+    /// }
+    /// </remarks>
+    public record CreateOrderRequest(int ProviderId, string ModelIdentifier, string? FirmwareVersion, JsonElement RequestPayload);
+
+    /// <summary>
+    /// Cadastra uma ordem.
+    /// </summary>
+    /// <param name="req">Critérios e o JSON com a ação remota.</param>
+    [HttpPost]
+    [ProducesResponseType(typeof(object), 201)]
+    [ProducesResponseType(400)]
+    public async Task<IActionResult> Create([FromBody] CreateOrderRequest req, CancellationToken ct)
+    {
+        if (req.RequestPayload.ValueKind == JsonValueKind.Undefined || req.RequestPayload.ValueKind == JsonValueKind.Null)
+            return BadRequest("RequestPayload requerido");
+
+        RemoteActionEnvelope? envelope;
+        try
+        {
+            envelope = JsonSerializer.Deserialize<RemoteActionEnvelope>(req.RequestPayload.GetRawText());
+        }
+        catch (Exception ex)
+        {
+            return BadRequest($"Payload inválido: {ex.Message}");
+        }
+        if (envelope == null || string.IsNullOrWhiteSpace(envelope.ActionType))
+            return BadRequest("ActionType requerido");
+
+        switch (envelope.ActionType)
+        {
+            case RemoteActionTypes.HttpDownload:
+                var http = envelope.Payload.Deserialize<HttpDownloadPayload>();
+                if (http == null || string.IsNullOrWhiteSpace(http.Url))
+                    return BadRequest("Payload.HttpDownload.Url requerido");
+                break;
+            case RemoteActionTypes.RouterCommand:
+                var cmd = envelope.Payload.Deserialize<RouterCommandPayload>();
+                if (cmd == null || string.IsNullOrWhiteSpace(cmd.Command) || string.IsNullOrWhiteSpace(cmd.TargetService))
+                    return BadRequest("Payload.RouterCommand.Command e TargetService requeridos");
+                break;
+            default:
+                return BadRequest("ActionType não suportado");
+        }
+
+        var entity = new UpdatePackage
+        {
+            ProviderId = req.ProviderId,
+            ModelIdentifier = req.ModelIdentifier,
+            FirmwareVersion = req.FirmwareVersion,
+            RequestPayload = req.RequestPayload.GetRawText(),
+            CreatedAt = DateTime.UtcNow
+        };
+        _db.UpdatePackages.Add(entity);
+        await _db.SaveChangesAsync(ct);
+        return CreatedAtAction(nameof(GetById), new { id = entity.Id }, new { entity.Id });
+    }
+
+    /// <summary>
+    /// Retorna a ordem cadastrada.
+    /// </summary>
+    [HttpGet("{id:int}")]
+    [ProducesResponseType(200)]
+    [ProducesResponseType(404)]
+    public async Task<IActionResult> GetById(int id, CancellationToken ct)
+    {
+        var e = await _db.UpdatePackages.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id, ct);
+        if (e == null) return NotFound();
+        return Ok(new { e.Id, e.ProviderId, e.ModelIdentifier, e.FirmwareVersion, e.RequestPayload, e.CreatedAt });
+    }
+}

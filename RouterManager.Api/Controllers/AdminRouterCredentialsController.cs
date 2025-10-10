@@ -13,14 +13,23 @@ public class AdminRouterCredentialsController : ControllerBase
     private readonly RouterManagerDbContext _db;
     public AdminRouterCredentialsController(RouterManagerDbContext db) => _db = db;
 
-    public sealed class CredentialRequest
+    public sealed class CreateCredentialRequest
     {
         public int RouterModelId { get; set; }
         public string Username { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
     }
 
+    public sealed class UpdateCredentialRequest
+    {
+        public string? Username { get; set; }
+        public string? Password { get; set; }
+        public int? RouterModelId { get; set; }
+    }
+
+    // GET: /api/admin/routercredentials
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAll([FromQuery] int? routerModelId, CancellationToken ct)
     {
         var query = _db.RouterCredentials.AsNoTracking().Include(c => c.RouterModel).ThenInclude(m => m.Provider).AsQueryable();
@@ -40,24 +49,57 @@ public class AdminRouterCredentialsController : ControllerBase
         return Ok(list);
     }
 
+    // GET: /api/admin/routercredentials/{id}
+    [HttpGet("{id:int}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetById(int id, CancellationToken ct)
+    {
+        var e = await _db.RouterCredentials.AsNoTracking().Include(c => c.RouterModel).ThenInclude(m => m.Provider).FirstOrDefaultAsync(c => c.Id == id, ct);
+        if (e == null) return NotFound();
+        return Ok(new { e.Id, e.Username, Password = _db.Unprotect(e.PasswordEncrypted), e.RouterModelId, Model = e.RouterModel.Name, Provider = e.RouterModel.Provider.Name });
+    }
+
+    // POST: /api/admin/routercredentials
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] CredentialRequest req, CancellationToken ct)
+    [ProducesResponseType(typeof(object), StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Create([FromBody] CreateCredentialRequest req, CancellationToken ct)
     {
         if (req.RouterModelId <= 0) return BadRequest("RouterModelId requerido");
         if (string.IsNullOrWhiteSpace(req.Username) || string.IsNullOrWhiteSpace(req.Password)) return BadRequest("Username e Password requeridos");
         var model = await _db.RouterModels.FirstOrDefaultAsync(m => m.Id == req.RouterModelId, ct);
         if (model == null) return BadRequest("Modelo inválido");
-        _db.RouterCredentials.Add(new RouterManager.Domain.Entities.RouterCredential
+        var entity = new RouterManager.Domain.Entities.RouterCredential
         {
             RouterModelId = req.RouterModelId,
             Username = req.Username.Trim(),
             PasswordEncrypted = _db.Protect(req.Password)
-        });
+        };
+        _db.RouterCredentials.Add(entity);
         await _db.SaveChangesAsync(ct);
-        return CreatedAtAction(nameof(GetAll), new { req.RouterModelId }, new { ok = true });
+        return CreatedAtAction(nameof(GetById), new { id = entity.Id }, new { entity.Id });
     }
 
+    // PUT: /api/admin/routercredentials/{id}
+    [HttpPut("{id:int}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> Update(int id, [FromBody] UpdateCredentialRequest req, CancellationToken ct)
+    {
+        var entity = await _db.RouterCredentials.FirstOrDefaultAsync(c => c.Id == id, ct);
+        if (entity == null) return NotFound();
+        if (!string.IsNullOrWhiteSpace(req.Username)) entity.Username = req.Username.Trim();
+        if (!string.IsNullOrWhiteSpace(req.Password)) entity.PasswordEncrypted = _db.Protect(req.Password);
+        if (req.RouterModelId.GetValueOrDefault() > 0) entity.RouterModelId = req.RouterModelId!.Value;
+        await _db.SaveChangesAsync(ct);
+        return NoContent();
+    }
+
+    // DELETE: /api/admin/routercredentials/{id}
     [HttpDelete("{id:int}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Delete(int id, CancellationToken ct)
     {
         var entity = await _db.RouterCredentials.FirstOrDefaultAsync(c => c.Id == id, ct);

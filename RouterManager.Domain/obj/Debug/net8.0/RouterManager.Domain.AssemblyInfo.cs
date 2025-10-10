@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RouterManager.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+53d7be644ccf2937113d335ef02bdd04bab5624d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+129d9018d16795bca20063caef47321aea4d4489")]
 [assembly: System.Reflection.AssemblyProductAttribute("RouterManager.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RouterManager.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

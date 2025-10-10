@@ -1,0 +1,33 @@
+﻿using RouterManager.Application.Interfaces;
+using RouterManager.Shared.Dtos.Responses;
+using RouterManager.Shared.Dtos.Requests;
+
+namespace RouterManager.Application.Services;
+
+public class UpdateService : IUpdateService
+{
+    private readonly IUpdateRepository _repo;
+    public UpdateService(IUpdateRepository repo) => _repo = repo;
+
+    public async Task<UpdatePackageResponse?> CheckAsync(CheckForUpdateRequest request, CancellationToken ct = default)
+    {
+        // 1. Procura por ordem específica para o SerialNumber
+        if (!string.IsNullOrWhiteSpace(request.SerialNumber))
+        {
+            var specific = await _repo.FindSpecificAsync(request.ProviderId, request.ModelIdentifier, request.SerialNumber, ct);
+            if (specific != null)
+            {
+                return new UpdatePackageResponse { RequestPayload = specific.RequestPayload };
+            }
+        }
+
+        // 2. Fallback: ordem genérica (sem serial), com firmware opcional
+        var generic = await _repo.FindGenericAsync(request.ProviderId, request.ModelIdentifier, request.FirmwareVersion, ct);
+        if (generic != null)
+        {
+            return new UpdatePackageResponse { RequestPayload = generic.RequestPayload };
+        }
+
+        return null;
+    }
+}

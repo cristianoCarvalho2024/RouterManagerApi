@@ -4,18 +4,5 @@
         <name>RouterManager.Api</name>
     </assembly>
     <members>
-        <member name="M:RouterManager.Api.Controllers.UpdateOrdersController.Create(RouterManager.Api.Models.CreateUpdateOrderRequest,System.Threading.CancellationToken)">
-            <summary>
-            Cria uma nova ordem de atualização remota (RemoteAction).
-            </summary>
-            <remarks>
-            Envie requestPayload como OBJETO JSON (não string). Suporta SerialNumber opcional para direcionar um dispositivo específico.
-            </remarks>
-        </member>
-        <member name="M:RouterManager.Api.Controllers.UpdateOrdersController.GetById(System.Int32,System.Threading.CancellationToken)">
-            <summary>
-            Retorna a ordem cadastrada.
-            </summary>
-        </member>
     </members>
 </doc>
