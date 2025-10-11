@@ -50,7 +50,11 @@ public class AuthService : IAuthService
 
     private string GenerateJwt(User user, out DateTimeOffset expiresAt)
     {
-        var key = _config["Jwt:Key"] ?? "dev-secret-key-change";
+        var key = _config["Jwt:Key"] ?? throw new InvalidOperationException("Jwt:Key não configurado");
+        if (Encoding.UTF8.GetByteCount(key) < 32)
+        {
+            throw new InvalidOperationException("Jwt:Key precisa ter pelo menos 256 bits (32 bytes).");
+        }
         var issuer = _config["Jwt:Issuer"] ?? "RouterManager";
         var creds = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)), SecurityAlgorithms.HmacSha256);
         var claims = new[]

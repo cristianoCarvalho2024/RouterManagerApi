@@ -2,6 +2,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RouterManager.Application.Services;
 using RouterManager.Api.Models;
+using RouterManager.Application.Interfaces;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace RouterManager.Api.Controllers;
 
@@ -12,11 +17,16 @@ public class AuthController : ControllerBase
     private readonly IAuthService _auth;
     private readonly ILogger<AuthController> _logger;
     private readonly IWebHostEnvironment _env;
-    public AuthController(IAuthService auth, ILogger<AuthController> logger, IWebHostEnvironment env)
+    private readonly IConfiguration _config;
+    private readonly ITokenStore _tokenStore;
+
+    public AuthController(IAuthService auth, ILogger<AuthController> logger, IWebHostEnvironment env, IConfiguration config, ITokenStore tokenStore)
     {
         _auth = auth;
         _logger = logger;
         _env = env;
+        _config = config;
+        _tokenStore = tokenStore;
     }
 
     [HttpPost("register")]
@@ -52,6 +62,42 @@ public class AuthController : ControllerBase
             return Unauthorized();
         }
         _logger.LogInformation("Auth LOGIN success: user={User} ip={Ip}", request?.Username, ip);
+        return Ok(new { token });
+    }
+
+    [HttpPost("refresh")]
+    [Authorize]
+    public async Task<IActionResult> Refresh(CancellationToken ct)
+    {
+        var userIdStr = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (!int.TryParse(userIdStr, out var userId) || userId <= 0)
+        {
+            return Unauthorized();
+        }
+
+        var role = User.FindFirstValue(ClaimTypes.Role) ?? string.Empty;
+        var name = User.FindFirstValue(ClaimTypes.Name) ?? string.Empty;
+
+        var key = _config["Jwt:Key"] ?? throw new InvalidOperationException("Jwt:Key não configurado");
+        if (Encoding.UTF8.GetByteCount(key) < 32)
+        {
+            throw new InvalidOperationException("Jwt:Key precisa ter pelo menos 256 bits (32 bytes).");
+        }
+        var issuer = _config["Jwt:Issuer"] ?? "RouterManager";
+        var creds = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)), SecurityAlgorithms.HmacSha256);
+
+        var claims = new List<Claim>
+        {
+            new Claim(ClaimTypes.NameIdentifier, userId.ToString())
+        };
+        if (!string.IsNullOrWhiteSpace(name)) claims.Add(new Claim(ClaimTypes.Name, name));
+        if (!string.IsNullOrWhiteSpace(role)) claims.Add(new Claim(ClaimTypes.Role, role));
+
+        var expiresAt = DateTimeOffset.UtcNow.AddHours(4);
+        var jwt = new JwtSecurityToken(issuer, null, claims, expires: expiresAt.UtcDateTime, signingCredentials: creds);
+        var token = new JwtSecurityTokenHandler().WriteToken(jwt);
+
+        await _tokenStore.UpsertUserTokenAsync(userId, token, expiresAt, ct);
         return Ok(new { token });
     }
 }

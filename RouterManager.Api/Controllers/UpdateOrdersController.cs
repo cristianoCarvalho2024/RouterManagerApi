@@ -19,6 +19,7 @@ public class UpdateOrdersController : ControllerBase
 
     // GET: /api/v1/update-orders
     [HttpGet]
+    [Authorize(Policy = "PublicProviders")] // leitura pública para app
     public async Task<IActionResult> GetAll(CancellationToken ct)
     {
         var orders = await _db.UpdatePackages
@@ -33,6 +34,7 @@ public class UpdateOrdersController : ControllerBase
     [HttpGet("{id:int}")]
     [ProducesResponseType(typeof(UpdateOrderDetailDto), 200)]
     [ProducesResponseType(404)]
+    [Authorize(Policy = "PublicProviders")] // leitura pública para app
     public async Task<IActionResult> GetById(int id, CancellationToken ct)
     {
         var o = await _db.UpdatePackages

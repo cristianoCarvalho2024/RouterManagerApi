@@ -19,9 +19,10 @@ public class PublicController : ControllerBase
     [ResponseCache(Duration = 60)]
     public async Task<IActionResult> GetGenericToken(CancellationToken ct)
     {
-        // Lê token genérico persistido no seeder (Serial='GENERIC_APP', Kind='device')
+        // Lê token genérico persistido no seeder (Serial='GENERIC_APP', Kind='device').
+        // Ao projetar para um tipo primitivo, EF espera a coluna com alias 'Value'.
         var token = await _db.Database
-            .SqlQuery<string>($"SELECT TOP 1 Token FROM dbo.JwtTokens WHERE Kind='device' AND Serial='GENERIC_APP' ORDER BY Id DESC")
+            .SqlQuery<string>($"SELECT TOP 1 Token AS [Value] FROM dbo.JwtTokens WHERE Kind='device' AND Serial='GENERIC_APP' ORDER BY Id DESC")
             .FirstOrDefaultAsync(ct);
         if (string.IsNullOrWhiteSpace(token)) return NotFound();
         return Ok(new TokenResponse { Token = token });

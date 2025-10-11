@@ -128,6 +128,34 @@ services.AddAuthentication(options =>
         ValidIssuer = jwtIssuer,
         ClockSkew = TimeSpan.FromMinutes(2)
     };
+
+    // Evitar log/challenge quando o token não é um JWT (sem dots) para permitir fallback ao DbToken
+    options.Events = new JwtBearerEvents
+    {
+        OnMessageReceived = context =>
+        {
+            var auth = context.Request.Headers["Authorization"].ToString();
+            if (!string.IsNullOrWhiteSpace(auth) && auth.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
+            {
+                var token = auth.Substring("Bearer ".Length).Trim();
+                if (!string.IsNullOrEmpty(token) && !token.Contains('.'))
+                {
+                    context.NoResult();
+                    return Task.CompletedTask;
+                }
+            }
+            return Task.CompletedTask;
+        },
+        OnAuthenticationFailed = context =>
+        {
+            // Se o token for malformado, não precise logar erro detalhado; deixe DbToken tentar
+            if (context.Exception is Microsoft.IdentityModel.Tokens.SecurityTokenMalformedException)
+            {
+                context.NoResult();
+            }
+            return Task.CompletedTask;
+        }
+    };
 })
 .AddScheme<AuthenticationSchemeOptions, DbTokenAuthenticationHandler>(DbTokenAuthenticationHandler.SchemeName, null);
 

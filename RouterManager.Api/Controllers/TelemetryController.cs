@@ -8,7 +8,7 @@ namespace RouterManager.Api.Controllers;
 [ApiController]
 [Route("api/v1/telemetry")]
 [Route("api/telemetry")] // alias sem versão para compatibilidade
-[Authorize]
+[Authorize(Policy = "PublicProvisioning")] // aceita generic/bootstrap/serial
 public class TelemetryController : ControllerBase
 {
     private readonly ITelemetryService _telemetryService;
